@@ -1,37 +1,21 @@
-import { Http, Request, RequestMethod, Headers } from '@angular/http';
+import { IServerResponse } from './IServerResponse';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Experience } from '../models/Experience';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject, pipe } from 'rxjs';
+import { map, takeUntil, tap } from 'rxjs/operators';
+import { ServerResponse } from './ServerResponse';
 
-class BaseService {
-  constructor(public http: Http) {}
-  get<T>(
-    url: string,
-    auth: { accessToken: string; refreshToken: string },
-    headers: {},
-    queryString: {}
-  ) {
-    const header = new Headers({
-      Authentication: 'Bearer ' + auth.accessToken,
-      refresh: 'Bearer ' + auth.refreshToken
-    });
-    let searchParams: string;
-    for (const key in queryString) {
-      if (Object.hasOwnProperty(key)) {
-        const element = queryString[key];
-        searchParams = searchParams + '&' + key + '=' + element;
-      }
-    }
-    for (const key in headers) {
-      if (Object.hasOwnProperty(key)) {
-        const element = headers[key];
-        header.append(key, element);
-      }
-    }
-    this.http.request(
-      new Request({
-        method: RequestMethod.Get,
-        url: url,
-        headers: header,
-        search: searchParams
+@Injectable({
+  providedIn: 'root'
+})
+export class BaseService {
+  constructor(private url: string, private http: HttpClient) {}
+  getOne<T>(id) {
+    return this.http.get<ServerResponse<T>>(this.url + String(id)).pipe(
+      map(data => {
+        return new ServerResponse<T>(data);
       })
     );
   }

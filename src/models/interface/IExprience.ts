@@ -1,4 +1,4 @@
-import IProject from "../interface/IProject";
+import IProject from '../interface/IProject';
 
 interface IExperience {
   Id: number;
