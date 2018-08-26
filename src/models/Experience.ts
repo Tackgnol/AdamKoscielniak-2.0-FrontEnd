@@ -7,15 +7,17 @@ export class Experience implements IExperience, ISerializebleModel<Experience> {
   Position: string;
   Responsibilities: any;
   CurrentEmployer: boolean;
+  Skills: Array<string>;
   BeginDate: Date;
   EndDate: Date;
-  Projects: IProject[];
+  Projects: Array<IProject>;
 
   constructor(experience: IExperience) {
     this.Id = experience.Id;
     this.Employer = experience.Employer;
     this.Position = experience.Position;
     this.Responsibilities = experience.Responsibilities;
+    this.Skills = experience.Skills;
     this.CurrentEmployer = experience.CurrentEmployer;
     this.BeginDate = experience.BeginDate;
     this.EndDate = experience.EndDate;

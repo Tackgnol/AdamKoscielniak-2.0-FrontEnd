@@ -6,6 +6,7 @@ interface IExperience {
   Position: string;
   Responsibilities: Array<string>;
   CurrentEmployer: boolean;
+  Skills: Array<string>;
   BeginDate: Date;
   EndDate: Date;
   Projects: Array<IProject>;
