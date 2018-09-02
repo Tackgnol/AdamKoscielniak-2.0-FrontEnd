@@ -1,0 +1,13 @@
+.bounds {
+  margin: auto;
+  max-width: 1000px;
+}
+
+img {
+  margin: auto;
+}
+
+.center_text {
+  text-align: center;
+  vertical-align: -webkit-baseline-middle;
+}

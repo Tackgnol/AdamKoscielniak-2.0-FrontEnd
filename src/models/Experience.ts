@@ -11,6 +11,7 @@ export class Experience implements IExperience, ISerializebleModel<Experience> {
   BeginDate: Date;
   EndDate: Date;
   Projects: Array<IProject>;
+  Location: string;
 
   constructor(experience: IExperience) {
     this.Id = experience.Id;

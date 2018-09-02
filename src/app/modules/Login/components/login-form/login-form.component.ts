@@ -19,11 +19,14 @@ export class LoginFormComponent implements OnInit {
   username: string;
   password: string;
   errors: Array<string>;
+  isLoading = false;
   ngOnInit() {}
   login(): void {
+    this.isLoading = true;
     const l = this.auth.login(this.username, this.password).subscribe(
       data => {
         this.router.navigate(['/']);
+        this.isLoading = false;
       },
       e => {
         let errors = '<ul>';
@@ -37,6 +40,7 @@ export class LoginFormComponent implements OnInit {
           progressBar: true,
           closeButton: true
         });
+        this.isLoading = false;
       }
     );
   }
