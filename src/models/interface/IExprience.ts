@@ -7,9 +7,10 @@ interface IExperience {
   Responsibilities: Array<string>;
   CurrentEmployer: boolean;
   Skills: Array<string>;
-  BeginDate: Date;
-  EndDate: Date;
+  BeginDate: { $date: number };
+  EndDate: { $date: number };
   Projects: Array<IProject>;
+  Location: string;
 }
 
 export default IExperience;

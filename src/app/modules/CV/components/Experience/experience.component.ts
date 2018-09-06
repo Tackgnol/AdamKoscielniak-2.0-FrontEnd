@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from 'src/services/experience-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Experience } from 'src/models/Experience';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-experience',

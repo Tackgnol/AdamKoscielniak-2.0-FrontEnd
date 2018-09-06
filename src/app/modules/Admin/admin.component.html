@@ -1,14 +1,16 @@
 <div class="sidenav" [class.sn-show]="showSideBar">
   <a class="closebtn" (click)="toggle()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a [routerLink]="['../Admin']">Main</a>
+  <a [routerLink]="['Experience']">Experiences</a>
+  <a>Education</a>
+  <a>Skills</a>
 </div>
 
-<div class="main" [class.main-show]="showSideBar">
-  <h2>Sidenav Push Example</h2>
-  <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we
-    add a black see-through background-color to body when the sidenav is opened.</p>
-  <a class="float" (click)="toggle()" [class.float-nav]="showSideBar"><i class="fa fa-plus my-float"></i></a>
-</div>
+<section class="section education-section" [class.main-show]="showSideBar">
+  <h2 class="section-title">Admin Panel</h2>
+  <router-outlet></router-outlet>
+  <a class="float" (click)="toggle()" [class.float-nav]="showSideBar" [ngSwitch]="showSideBar">
+    <i *ngSwitchCase="false" class="fa fa-plus my-float"></i>
+    <i *ngSwitchCase="true" class="fa fa-times my-float"></i>
+  </a>
+</section>

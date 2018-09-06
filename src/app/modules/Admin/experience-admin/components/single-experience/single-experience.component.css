@@ -1,0 +1,23 @@
+@media all and (min-width:321px) and (max-width: 480px) {
+  .cut-title {
+    display: block;
+    width: 170px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+@media all and (min-width:0px) and (max-width: 320px) {
+  .cut-title {
+    display: block;
+    width: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.removed {
+  display: none;
+}

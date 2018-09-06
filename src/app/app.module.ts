@@ -1,4 +1,4 @@
-import { Experience } from 'src/models/Experience';
+
 import { AuthService } from './../services/auth-service.service';
 import { AuthInterceptor } from './../utils/AuthInterceptor';
 import { SpinnerComponent } from './../utils/components/Spinner';
@@ -29,11 +29,25 @@ import { ExperienceWorkTimeComponent } from './modules/CV/components/Experience/
 import { AdminComponent } from './modules/Admin/admin.component';
 import { ExperienceAdminComponent } from './modules/Admin/experience-admin/experience-admin.component';
 import { LocationComponent } from './components/location/location.component';
+import { MainAdminComponent } from './modules/Admin/main-admin/main-admin.component';
+import { SingleExperienceComponent } from './modules/Admin/experience-admin/components/single-experience/single-experience.component';
+import { NewExperienceComponent } from './modules/Admin/experience-admin/components/new-experience/new-experience.component';
+import { ConfirmationModalComponent } from '../utils/components/confirmation-modal/confirmation-modal.component';
+import { ModalModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ExperienceFormComponent } from './modules/Admin/experience-admin/components/experience-form/experience-form.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'CV', component: CVMainComponent },
-  { path: 'Admin', component: AdminComponent }
+  {
+    path: 'Admin',
+    component: AdminComponent,
+    children: [
+      { path: '', component: MainAdminComponent },
+      { path: 'Experience', component: ExperienceAdminComponent }
+    ]
+  }
 ];
 
 @NgModule({
@@ -48,7 +62,12 @@ const appRoutes: Routes = [
     ExperienceWorkTimeComponent,
     AdminComponent,
     ExperienceAdminComponent,
-    LocationComponent
+    LocationComponent,
+    MainAdminComponent,
+    SingleExperienceComponent,
+    NewExperienceComponent,
+    ConfirmationModalComponent,
+    ExperienceFormComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -59,6 +78,8 @@ const appRoutes: Routes = [
       spinnerColor: 'white',
       spinnerLines: 12
     }),
+    ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     FlexLayoutModule,
     BrowserModule,
     FormsModule,
@@ -66,6 +87,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     CommonModule
   ],
+  entryComponents: [ConfirmationModalComponent],
   providers: [
     AuthService,
     ExperienceService,
@@ -77,4 +99,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

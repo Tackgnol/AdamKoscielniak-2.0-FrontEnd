@@ -60,12 +60,15 @@ export class BaseService {
   }
 
   delete<T>(id) {
-    return this.http.delete<ServerResponse<T>>(this.url + String(id)).pipe(
-      map(data => new ServerResponse<T>(data)),
-      catchError(e => {
-        console.log(e);
-        return e;
-      })
-    );
+    return this.http
+      .delete<ServerResponse<T>>(this.url + '/' + String(id))
+      .pipe(
+        map(data => {
+          return new ServerResponse<T>(data);
+        }),
+        catchError(e => {
+          return e;
+        })
+      );
   }
 }

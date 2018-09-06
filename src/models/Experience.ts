@@ -1,39 +1,36 @@
 import IExperience from './interface/IExprience';
 import IProject from './interface/IProject';
 
-export class Experience implements IExperience, ISerializebleModel<Experience> {
+export class Experience implements IExperience {
   Id: number;
   Employer: string;
   Position: string;
-  Responsibilities: any;
+  Responsibilities: Array<string>;
   CurrentEmployer: boolean;
   Skills: Array<string>;
-  BeginDate: Date;
-  EndDate: Date;
+
   Projects: Array<IProject>;
   Location: string;
+  BeginDate: { $date: number };
+  EndDate: { $date: number };
+  getBeginDate: Date;
+  getEndDate: Date;
 
-  constructor(experience: IExperience) {
-    this.Id = experience.Id;
-    this.Employer = experience.Employer;
-    this.Position = experience.Position;
-    this.Responsibilities = experience.Responsibilities;
-    this.Skills = experience.Skills;
-    this.CurrentEmployer = experience.CurrentEmployer;
-    this.BeginDate = experience.BeginDate;
-    this.EndDate = experience.EndDate;
-    this.Projects = experience.Projects;
+
+  constructor(experience?: IExperience) {
+    this.Id = experience && experience.Id || null;
+    this.Employer = experience && experience.Employer || null;
+    this.Position = experience && experience.Position || null;
+    this.Responsibilities = experience && experience.Responsibilities || [];
+    this.CurrentEmployer = experience && experience.CurrentEmployer || false;
+    this.Skills = experience && experience.Skills || [];
+    this.BeginDate = experience && experience.BeginDate || { $date: 0 };
+    this.EndDate = experience && experience.EndDate || { $date: 0 };
+    this.getBeginDate = experience && new Date(experience.BeginDate.$date) || new Date();
+    this.getEndDate = experience && new Date(experience.EndDate.$date) || new Date();
+    this.Projects = experience && experience.Projects || [];
+    this.Location = experience && experience.Location || null;
+
   }
 
-  deserialize(jsonObject: string): Experience {
-    // const experience =  JSON.parse(jsonObject);
-    // if(experience of IExperience) {
-    //   return new Experience(experience);
-    // } else {
-    throw new Error('Invalid experience object passed to deserializer');
-    // }
-  }
-  serialize(object: Experience): string {
-    return JSON.stringify(object);
-  }
 }

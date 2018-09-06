@@ -1,0 +1,73 @@
+<form (ngSubmit)="onSubmit()" #experienceForm="ngForm">
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label for="employer">Employer</label>
+        <input type="text" class="form-control" id="Employer" required [(ngModel)]="model.Employer" name="Employer"
+          #Employer="ngModel" />
+        <div [hidden]="Employer.valid || Employer.pristine" class="alert alert-danger">Employer is required</div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label for="employer">Position</label>
+        <input type="text" class="form-control" id="Position" required [(ngModel)]="model.Position" name="Position"
+          #Position="ngModel" />
+        <div [hidden]="Position.valid || Position.pristine" class="alert alert-danger">Position is required</div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label for="employer">Location</label>
+        <input type="text" class="form-control" id="Location" required [(ngModel)]="model.Location" name="Location"
+          #Location="ngModel" />
+        <div [hidden]="Location.valid || Location.pristine" class="alert alert-danger">Location is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <label for="employer">BeginDate</label>
+        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker id="getBeginDate" required
+          [(ngModel)]="model.getBeginDate" name="getBeginDate" #getBeginDate="ngModel" />
+        <div [hidden]="getBeginDate.valid || getBeginDate.pristine" class="alert alert-danger">BeginDate is required</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <label for="employer">EndDate</label>
+        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker id="getEndDate" required
+          [(ngModel)]="model.getEndDate" name="getEndDate" #getEndDate="ngModel" />
+        <div [hidden]="getEndDate.valid || getEndDate.pristine" class="alert alert-danger">BeginDate is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+
+      <div class="form-group">
+        <label>Responsibilities</label>
+        <div *ngFor="let resp of experience.Responsibilities; index as i; trackBy: trackByFn">
+          <input type="text" name="resp-{{i}}" class="form-control" [(ngModel)]="model.Responsibilities[i]" #resp="ngModel" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+
+      <div class="form-group">
+        <label>Skills</label>
+        <div *ngFor="let skl of experience.Skills; index as i; trackBy: trackByFn">
+          <input type="text" name="skl-{{i}}" class="form-control" [(ngModel)]="model.Skills[i]" #skl="ngModel" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <div class="form-group">
+        <button type="submit" class="btn d-none d-md-inline-block float-right" [disabled]="!experienceForm.form.valid">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,3 +1,8 @@
-<p>
-  experience-admin works!
-</p>
+<h3 class="section-title">Experiences</h3>
+<div *ngIf="loading">
+  <spinner></spinner>
+</div>
+<div *ngFor="let experience of experiences">
+  <app-single-experience [experience]="experience">
+  </app-single-experience>
+</div>

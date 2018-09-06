@@ -45,7 +45,7 @@ body {
   margin-left: 50px;
 }
 
-.main {
+.section {
   transition: margin-left .5s;
   padding: 16px;
   margin-left: 0;
@@ -80,5 +80,5 @@ body {
 }
 
 .float-nav {
-  left: 290px;
+  margin-left: 250px;
 }
