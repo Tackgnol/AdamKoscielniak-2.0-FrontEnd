@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" #experienceForm="ngForm">
+<form #experienceForm="ngForm">
   <div class="row">
     <div class="col-md-4 col-xs-12">
       <div class="form-group">
@@ -44,29 +44,88 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 col-xs-12">
+    <div class="col-md-12 col-xs-12">
 
       <div class="form-group">
-        <label>Responsibilities</label>
-        <div *ngFor="let resp of experience.Responsibilities; index as i; trackBy: trackByFn">
-          <input type="text" name="resp-{{i}}" class="form-control" [(ngModel)]="model.Responsibilities[i]" #resp="ngModel" />
+        <h2>Responsibilities</h2>
+        <div class="row pt-1" *ngFor="let resp of model.Responsibilities; index as i; trackBy: trackByFn">
+          <div class="col-md-7 col-lg-10">
+            <input type="text" name="resp-{{i}}" class="form-control" [(ngModel)]="model.Responsibilities[i]" #resp="ngModel" />
+          </div>
+          <div class="col-md-5 col-lg-2">
+            <button class="btn d-md-inline-block float-right" (click)="removeResponsibility(i)"><i class="fa fa-times"
+                aria-hidden="true"></i></button>
+            <button class="btn d-md-inline-block float-right" [disabled]="i===0" (click)="moveResponsibility(i,i-1)"><i
+                class="fa fa-arrow-up" aria-hidden="true"></i></button>
+            <button class="btn d-md-inline-block float-right" [disabled]="i===model.Responsibilities.length-1" (click)="moveResponsibility(i,i-1)"><i
+                class="fa fa-arrow-down" aria-hidden="true"></i></button>
+
+          </div>
+        </div>
+        <label for="newReposnibility">New Responsibility</label>
+        <div class="row">
+          <div class="col-10">
+            <input class="form-control" #newResponsibility type="text" name="newReposnibility" id="newReposnibility"
+              (keyup.enter)="addResponsibility(newResponsibility)" />
+          </div>
+          <div class="col-2 ">
+            <button class="btn d-md-inline-block float-right" (click)="addResponsibility(newResponsibility)"><i class="fa fa-plus"></i></button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-xs-12">
+    <div class="col-md-12 col-xs-12">
 
       <div class="form-group">
-        <label>Skills</label>
-        <div *ngFor="let skl of experience.Skills; index as i; trackBy: trackByFn">
-          <input type="text" name="skl-{{i}}" class="form-control" [(ngModel)]="model.Skills[i]" #skl="ngModel" />
+        <h2>Skills</h2>
+        <div class="row pt-1" *ngFor="let skl of model.Skills; index as i; trackBy: trackByFn">
+          <div class="col-md-5 col-lg-10">
+            <input type="text" name="skl-{{i}}" class="form-control" [(ngModel)]="model.Skills[i]" #skl="ngModel" />
+          </div>
+          <div class="col-md-7 col-lg-2">
+            <button class="btn  d-md-inline-block float-right" (click)="removeSkill(i)"><i class="fa fa-times"
+                aria-hidden="true"></i></button>
+            <button class="btn d-md-inline-block float-right" [disabled]="i===0" (click)="moveSkill(i,i-1)"><i class="fa fa-arrow-up"
+                aria-hidden="true"></i></button>
+            <button class="btn d-md-inline-block float-right" [disabled]="i===model.Skills.length-1" (click)="moveSkill(i,i+1)"><i
+                class="fa fa-arrow-down" aria-hidden="true"></i></button>
+
+          </div>
+        </div>
+        <label for="newReposnibility">New Skill</label>
+        <div class="row">
+          <div class="col-10">
+            <input class="form-control" #newSkill type="text" name="newSkill" id="newSkill" (keyup.enter)="addSkill(newSkill)" />
+          </div>
+          <div class="col-2">
+            <button class="btn float-right" (click)="addSkill(newSkill)"><i class="fa fa-plus"></i></button>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let project of model.Projects; index as i; trackBy: trackByFn">
+    <div class="col-md-12 col-xs-12">
+      <div class="form-group">
+        <h2>Projects</h2>
+        <label for="Project-Title-{{i}}">Project Title</label>
+        <input type="text" class="form-control" id="Project-Title-{{i}}" required [(ngModel)]="model.Projects[i].Title"
+          name="Project-Title-{{i}}" #Project="ngModel" />
+        <label for="Project-Description-{{i}}">Project Description</label>
+        <quill-editor #editor [(ngModel)]="model.Projects[i].Description" name="Project-Description-{{i}}" id="Project-Description-{{i}}"></quill-editor>
+        <label for="Project-Result-{{i}}">Project Result</label>
+        <quill-editor #editor [(ngModel)]="model.Projects[i].Result" name="Project-Result-{{i}}" id="Project-Result-{{i}}"></quill-editor>
+        <label for="Project-Title-{{i}}">Portfolio Link</label>
+        <input type="text" class="form-control" id="Project-PortfolioLink-{{i}}" required [(ngModel)]="model.Projects[i].PortfolioLink"
+          name="Project-PortfolioLink-{{i}}" #Project="ngModel" />
+      </div>
+      <hr />
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 col-xs-12">
       <div class="form-group">
-        <button type="submit" class="btn d-none d-md-inline-block float-right" [disabled]="!experienceForm.form.valid">Submit</button>
+        <button (click)="onSubmit()" type="submit" class="btn d-md-inline-block float-right" [disabled]="!experienceForm.form.valid">Submit</button>
       </div>
     </div>
   </div>

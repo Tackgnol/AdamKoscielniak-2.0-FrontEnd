@@ -1,5 +1,5 @@
 import IExperience from './interface/IExprience';
-import IProject from './interface/IProject';
+import Project from './submodels/Project';
 
 export class Experience implements IExperience {
   Id: number;
@@ -9,10 +9,10 @@ export class Experience implements IExperience {
   CurrentEmployer: boolean;
   Skills: Array<string>;
 
-  Projects: Array<IProject>;
+  Projects: Array<Project>;
   Location: string;
-  BeginDate: { $date: number };
-  EndDate: { $date: number };
+  BeginDate: { $date: number } | Date;
+  EndDate: { $date: number } | Date;
   getBeginDate: Date;
   getEndDate: Date;
 

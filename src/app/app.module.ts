@@ -13,9 +13,13 @@ import { FormsModule } from '@angular/forms';
 
 import { ToastrModule } from 'ngx-toastr';
 
+import { QuillModule } from 'ngx-quill'
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
+
+
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ExperienceComponent } from './modules/CV/components/Experience/experience.component';
@@ -80,6 +84,7 @@ const appRoutes: Routes = [
     }),
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    QuillModule,
     FlexLayoutModule,
     BrowserModule,
     FormsModule,

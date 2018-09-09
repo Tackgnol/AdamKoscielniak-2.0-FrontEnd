@@ -17,7 +17,7 @@ export class AuthService extends BaseService {
   public refreshToken: string;
 
   constructor(http: HttpClient) {
-    super('http://127.0.0.1:5000/', http);
+    super('http://127.0.0.1:5000', http);
     this.refreshToken = localStorage.getItem('refreshToken');
     this.authToken = localStorage.getItem('authToken');
   }

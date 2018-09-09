@@ -4,6 +4,7 @@ import { BaseService } from './../utils/baseService';
 import { Injectable } from '@angular/core';
 import { Experience } from '../models/Experience';
 import { HttpClient } from '@angular/common/http';
+import IExperience from 'src/models/interface/IExprience';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ExperienceService extends BaseService {
     return this.getMany<Experience>(query).pipe(map(r => r));
   }
 
-  newExperience(experience: Experience) {
+  newExperience(experience: IExperience) {
     return this.post(experience, 'add').pipe(map(r => r));
   }
 
@@ -37,7 +38,8 @@ export class ExperienceService extends BaseService {
     );
   }
 
-  updateExperience(id: number, body: object) {
+  updateExperience(id: number, body: IExperience) {
+    console.log(body);
     return this.put(body, String(id)).pipe(
       catchError(e => {
         throw e;

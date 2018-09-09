@@ -12,7 +12,7 @@ import { IHeader } from '../models/interface/IHeader';
   providedIn: 'root'
 })
 export class BaseService {
-  constructor(private url: string, private http: HttpClient) {}
+  constructor(private url: string, private http: HttpClient) { }
 
   generateHeaders = (input: Array<IHeader>): Headers => {
     const headers = new Headers();
@@ -40,7 +40,7 @@ export class BaseService {
   }
 
   post<T>(body: object, addUrl: string = '') {
-    return this.http.post<ServerResponse<T>>(this.url + addUrl, body).pipe(
+    return this.http.post<ServerResponse<T>>(this.url + '/' + addUrl, body).pipe(
       map(data => {
         return data;
       }),
@@ -51,7 +51,7 @@ export class BaseService {
   }
 
   put<T>(body: object, addUrl: string = '') {
-    return this.http.put<ServerResponse<T>>(this.url + addUrl, body).pipe(
+    return this.http.put<ServerResponse<T>>(this.url + '/' + addUrl, body).pipe(
       map(data => new ServerResponse<T>(data)),
       catchError(e => {
         return e;
