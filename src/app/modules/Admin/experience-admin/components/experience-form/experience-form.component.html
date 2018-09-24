@@ -21,7 +21,17 @@
         <label for="employer">Location</label>
         <input type="text" class="form-control" id="Location" required [(ngModel)]="model.Location" name="Location"
           #Location="ngModel" />
-        <div [hidden]="Location.valid || Location.pristine" class="alert alert-danger">Location is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-12">
+      <div class="form-group">
+        <label for="employer">Company website</label>
+        <input type="text" class="form-control" id="CompanyWebsite" [(ngModel)]="model.CompanyWebsite" name="CompanyWebsite"
+          #CompanyWebsite="ngModel" />
       </div>
     </div>
   </div>
@@ -104,10 +114,17 @@
       </div>
     </div>
   </div>
+  <h2>Projects</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <button (click)="newProject()" class="btn d-md-inline-block">New project</button>
+      </div>
+    </div>
+  </div>
   <div class="row" *ngFor="let project of model.Projects; index as i; trackBy: trackByFn">
     <div class="col-md-12 col-xs-12">
       <div class="form-group">
-        <h2>Projects</h2>
         <label for="Project-Title-{{i}}">Project Title</label>
         <input type="text" class="form-control" id="Project-Title-{{i}}" required [(ngModel)]="model.Projects[i].Title"
           name="Project-Title-{{i}}" #Project="ngModel" />

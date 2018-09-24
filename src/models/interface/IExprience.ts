@@ -7,8 +7,9 @@ interface IExperience {
   Responsibilities: Array<string>;
   CurrentEmployer: boolean;
   Skills: Array<string>;
-  BeginDate: { $date: number } | Date;
-  EndDate: { $date: number } | Date;
+  CompanyWebsite: string;
+  BeginDate: any;
+  EndDate: any;
   Projects: Array<IProject>;
   Location: string;
 }

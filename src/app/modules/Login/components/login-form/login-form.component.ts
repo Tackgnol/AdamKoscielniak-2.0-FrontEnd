@@ -1,3 +1,4 @@
+import { ErrorsToList } from './../../../../../utils/ErrorsToList';
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
@@ -15,25 +16,21 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private toastr: ToastrService
-  ) {}
+  ) { }
   username: string;
   password: string;
   errors: Array<string>;
   isLoading = false;
-  ngOnInit() {}
+  ngOnInit() { }
   login(): void {
     this.isLoading = true;
-    const l = this.auth.login(this.username, this.password).subscribe(
-      data => {
+    this.auth.login(this.username, this.password).subscribe(
+      () => {
         this.router.navigate(['/']);
         this.isLoading = false;
       },
       e => {
-        let errors = '<ul>';
-        for (let i = 0; i < e.length; i++) {
-          errors = errors + '<li>' + e[i] + '</li>';
-        }
-        errors = errors + '</ul>';
+        const errors = ErrorsToList(e);
         this.toastr.error(errors, null, {
           enableHtml: true,
           positionClass: 'toast-top-full-width',

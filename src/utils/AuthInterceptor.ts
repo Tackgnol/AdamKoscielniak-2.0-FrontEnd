@@ -23,7 +23,7 @@ import { ITokens } from '../models/interface/ITokens';
 export class AuthInterceptor implements HttpInterceptor {
   tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   isRefreshingToken = false;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
     return req.clone({ setHeaders: { Authorization: 'Bearer ' + token } });
@@ -41,6 +41,9 @@ export class AuthInterceptor implements HttpInterceptor {
               return this.handle400Error(e);
             case 401:
               return this.handle401Error(req, next);
+            case 422:
+              this.router.navigate(['login']);
+              return this.authService.logout();
           }
         } else {
           return e;
@@ -88,7 +91,7 @@ export class AuthInterceptor implements HttpInterceptor {
   handle400Error(error) {
     if (
       error &&
-      error.status === 400 &&
+      error.status === 422 &&
       error.error &&
       error.error.error === 'invalid_grant'
     ) {
@@ -96,7 +99,6 @@ export class AuthInterceptor implements HttpInterceptor {
       this.router.navigate(['login']);
       return this.authService.logout();
     }
-
     return throwError(error);
   }
 }

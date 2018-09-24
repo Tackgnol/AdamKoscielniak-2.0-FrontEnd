@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./experience-work-time.component.css']
 })
 export class ExperienceWorkTimeComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
   @Input()
   dateFrom: { $date: number };
@@ -15,7 +15,11 @@ export class ExperienceWorkTimeComponent implements OnInit {
   @Input()
   currentEmployer: boolean;
   @Input()
+  website: string;
+  @Input()
   position: string;
+
+
   displayDateTo: number | string;
   displayDateFrom: number;
 

@@ -8,7 +8,7 @@
     <div class="item" *ngFor="let experience of experiences">
 
       <app-experience-work-time [dateFrom]="experience.BeginDate" [dateTo]="experience.EndDate" [currentEmployer]="experience.CurrentEmployer"
-        [position]="experience.Position">
+        [position]="experience.Position" [website]="experience.CompanyWebsite">
       </app-experience-work-time>
 
       <div class="work-place">
@@ -16,7 +16,7 @@
         <app-location [location]="experience.Location"></app-location>
         <app-experience-responsibilities [responsibilities]="experience.Responsibilities">
         </app-experience-responsibilities>
-        <app-experience-skills [skills]="experience.Skills"></app-experience-skills>
+        <app-experience-skills [skills]="experience.Skills" [onAdd]="onSkillClick"></app-experience-skills>
       </div>
 
     </div>

@@ -1,3 +1,5 @@
+import { FilterService } from './../services/filter.service';
+import { Globals } from './../utils/globals';
 
 import { AuthService } from './../services/auth-service.service';
 import { AuthInterceptor } from './../utils/AuthInterceptor';
@@ -40,6 +42,7 @@ import { ConfirmationModalComponent } from '../utils/components/confirmation-mod
 import { ModalModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ExperienceFormComponent } from './modules/Admin/experience-admin/components/experience-form/experience-form.component';
+import { FilterComponent } from './modules/CV/components/filter/filter.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -71,7 +74,8 @@ const appRoutes: Routes = [
     SingleExperienceComponent,
     NewExperienceComponent,
     ConfirmationModalComponent,
-    ExperienceFormComponent
+    ExperienceFormComponent,
+    FilterComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -100,7 +104,8 @@ const appRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    FilterService
   ],
   bootstrap: [AppComponent]
 })

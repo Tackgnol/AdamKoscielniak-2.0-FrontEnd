@@ -1,6 +1,4 @@
 import { ITokens } from './../models/interface/ITokens';
-import { ServerResponse } from './../utils/ServerResponse';
-import { ICredentials } from './../models/interface/ICredentials';
 import { Tokens } from './../models/Tokens';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './../utils/baseService';
@@ -38,7 +36,7 @@ export class AuthService extends BaseService {
         throw e.error.Errors;
       })
     );
-  };
+  }
 
   refreshTokens = () => {
     const body: ITokens = {
@@ -51,11 +49,11 @@ export class AuthService extends BaseService {
         return r.Value;
       })
     );
-  };
+  }
 
   logout = () => {
     localStorage.setItem('authToken', null);
     localStorage.setItem('refreshToken', null);
     return Observable.create('logout successfull');
-  };
+  }
 }

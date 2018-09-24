@@ -8,7 +8,7 @@ export class Experience implements IExperience {
   Responsibilities: Array<string>;
   CurrentEmployer: boolean;
   Skills: Array<string>;
-
+  CompanyWebsite: string;
   Projects: Array<Project>;
   Location: string;
   BeginDate: { $date: number } | Date;
@@ -24,6 +24,7 @@ export class Experience implements IExperience {
     this.Responsibilities = experience && experience.Responsibilities || [];
     this.CurrentEmployer = experience && experience.CurrentEmployer || false;
     this.Skills = experience && experience.Skills || [];
+    this.CompanyWebsite = experience && experience.CompanyWebsite || null;
     this.BeginDate = experience && experience.BeginDate || { $date: 0 };
     this.EndDate = experience && experience.EndDate || { $date: 0 };
     this.getBeginDate = experience && new Date(experience.BeginDate.$date) || new Date();

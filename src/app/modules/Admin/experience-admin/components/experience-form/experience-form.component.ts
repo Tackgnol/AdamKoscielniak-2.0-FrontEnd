@@ -4,6 +4,9 @@ import { Experience } from 'src/models/Experience';
 import { Component, OnInit, Input } from '@angular/core';
 import { ExperienceService } from 'src/services/experience-service.service';
 import IExperience from 'src/models/interface/IExprience';
+import { ToastrService } from 'ngx-toastr';
+import Project from '../../../../../../models/submodels/Project';
+import { ErrorsToList } from 'src/utils/ErrorsToList';
 
 @Component({
   selector: 'app-experience-form',
@@ -11,7 +14,7 @@ import IExperience from 'src/models/interface/IExprience';
   styleUrls: ['./experience-form.component.css']
 })
 export class ExperienceFormComponent implements OnInit {
-  constructor(private expServ: ExperienceService) { }
+  constructor(private expServ: ExperienceService, private toastr: ToastrService) { }
 
   @Input()
   newExperience: boolean;
@@ -60,6 +63,9 @@ export class ExperienceFormComponent implements OnInit {
     this.model.Skills.splice(to, 0, f);
   }
 
+  newProject = () => {
+    this.model.Projects.push(new Project());
+  }
 
   onSubmit = () => {
 
@@ -71,6 +77,7 @@ export class ExperienceFormComponent implements OnInit {
       Responsibilities: currentState.Responsibilities,
       CurrentEmployer: isNil(currentState.getEndDate),
       Skills: currentState.Skills,
+      CompanyWebsite: currentState.CompanyWebsite,
       BeginDate: currentState.getBeginDate,
       EndDate: currentState.getEndDate,
       Projects: currentState.Projects,
@@ -79,9 +86,23 @@ export class ExperienceFormComponent implements OnInit {
 
     if (this.newExperience) {
       console.log(toSend);
-      this.expServ.newExperience(toSend).subscribe();
+      this.expServ.newExperience(toSend).subscribe(
+        () => this.toastr.info('Changes saved succefully'),
+        e => this.toastr.error(e)
+      );
     } else {
-      this.expServ.updateExperience(currentState.Id, toSend).subscribe();
+      this.expServ.updateExperience(currentState.Id, toSend).subscribe(
+        () => this.toastr.info('Changes saved succefully'),
+        e => {
+          const errors = ErrorsToList(e);
+          this.toastr.error(errors, null, {
+            enableHtml: true,
+            positionClass: 'toast-top-full-width',
+            progressBar: true,
+            closeButton: true
+          });
+        },
+      );
     }
   }
 

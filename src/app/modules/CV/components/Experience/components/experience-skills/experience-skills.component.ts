@@ -6,10 +6,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./experience-skills.component.css']
 })
 export class ExperienceSkillsComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
   @Input()
   skills: Array<string>;
 
-  ngOnInit() {}
+  @Input()
+  onAdd: Function;
+
+  onSkillClick = skill => {
+    this.onAdd(skill);
+  }
+
+  ngOnInit() { }
 }

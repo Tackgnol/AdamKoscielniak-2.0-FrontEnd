@@ -1,3 +1,4 @@
+import { FilterService } from './../../../../../services/filter.service';
 import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from 'src/services/experience-service.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,14 +12,37 @@ import { Experience } from 'src/models/Experience';
 export class ExperienceComponent implements OnInit {
   constructor(
     private expService: ExperienceService,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private filters: FilterService
+  ) {
+    this.filters.skillFilters.subscribe(
+      r => {
+        console.log(r);
+        this.skills = r;
+        this.loadData();
+      }
+    );
+  }
 
   experiences = Array<Experience>();
+  skills = Array<string>();
   loading: boolean;
-  ngOnInit() {
+
+  onSkillClick = skill => {
+    this.filters.addSkillToFilter(skill);
+    // .subscribe(
+    //   r => {
+    //     this.skills.push(skill);
+    //     this.loadData();
+    //   }
+    // );
+  }
+
+
+  loadData = () => {
     this.loading = true;
-    const experienceRequest = this.expService.getExperiences(null);
+    console.log(this.skills);
+    const experienceRequest = this.expService.getExperiences({ skills: this.skills });
     experienceRequest.subscribe(
       data => {
         this.experiences = data.Value;
@@ -33,5 +57,9 @@ export class ExperienceComponent implements OnInit {
         });
       }
     );
+  }
+
+  ngOnInit() {
+    this.loadData();
   }
 }

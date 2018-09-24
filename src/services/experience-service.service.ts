@@ -1,10 +1,11 @@
 import { ServerResponse } from './../utils/ServerResponse';
-import { map, catchError, take } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { BaseService } from './../utils/baseService';
 import { Injectable } from '@angular/core';
 import { Experience } from '../models/Experience';
 import { HttpClient } from '@angular/common/http';
 import IExperience from 'src/models/interface/IExprience';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ExperienceService extends BaseService {
     );
   }
 
-  getExperiences(query: { from: Date; to: Date; skills: Array<string> }) {
+  getExperiences(query: { from?: string; to?: string; skills?: Array<string> }) {
     return this.getMany<Experience>(query).pipe(map(r => r));
   }
 
@@ -39,11 +40,10 @@ export class ExperienceService extends BaseService {
   }
 
   updateExperience(id: number, body: IExperience) {
-    console.log(body);
     return this.put(body, String(id)).pipe(
+      map(r => r),
       catchError(e => {
-        throw e;
-      })
-    );
+        throw e.error.Errors;
+      }));
   }
 }
