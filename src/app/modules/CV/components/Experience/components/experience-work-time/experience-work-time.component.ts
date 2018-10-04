@@ -14,11 +14,6 @@ export class ExperienceWorkTimeComponent implements OnInit {
   dateTo: { $date: number };
   @Input()
   currentEmployer: boolean;
-  @Input()
-  website: string;
-  @Input()
-  position: string;
-
 
   displayDateTo: number | string;
   displayDateFrom: number;

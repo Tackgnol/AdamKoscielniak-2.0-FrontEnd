@@ -1,0 +1,9 @@
+<div class="experience__projects__title">{{title}} <i class="fa float-right" [ngClass]="{'fa-chevron-up':show,'fa-chevron-down':!show }"
+    aria-hidden="true" (click)="toggleProject()"></i></div>
+<div class="animated " [ngClass]="{'zoomIn': show, 'zoomOut': !show}" *ngIf="show">
+  <div class="experience__projects__position">{{role}}</div>
+  <div class="experience__projects__point">Project Description</div>
+  <div class="experience__projects__point-details" [innerHTML]="descrtiption"></div>
+  <div class="experience__projects__point">Result</div>
+  <div class="experience__projects__point-details" [innerHTML]="result"></div>
+</div>

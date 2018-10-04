@@ -1,5 +1,4 @@
 import { FilterService } from './../services/filter.service';
-import { Globals } from './../utils/globals';
 
 import { AuthService } from './../services/auth-service.service';
 import { AuthInterceptor } from './../utils/AuthInterceptor';
@@ -43,6 +42,8 @@ import { ModalModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ExperienceFormComponent } from './modules/Admin/experience-admin/components/experience-form/experience-form.component';
 import { FilterComponent } from './modules/CV/components/filter/filter.component';
+import { ExperienceProjectsComponent } from './modules/CV/components/Experience/components/experience-projects/experience-projects.component';
+import { ExperienceSingleExperienceComponent } from 'src/app/modules/CV/components/Experience/components/single-experience/experience-single-experience.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     AppComponent,
     SpinnerComponent,
     ExperienceComponent,
+    ExperienceSingleExperienceComponent,
     LoginFormComponent,
     CVMainComponent,
     ExperienceResponsibilitiesComponent,
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
     NewExperienceComponent,
     ConfirmationModalComponent,
     ExperienceFormComponent,
-    FilterComponent
+    FilterComponent,
+    ExperienceProjectsComponent
   ],
   imports: [
     ToastrModule.forRoot(),

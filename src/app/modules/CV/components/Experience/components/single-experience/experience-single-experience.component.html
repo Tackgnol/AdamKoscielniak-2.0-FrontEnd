@@ -1,0 +1,35 @@
+<div class="col-md-7 col-sm-12">
+  <div class="row">
+    <div class="col-md-10 col-sm-12 experience__body">
+      <div class="experience__content experience__point">
+        <app-experience-work-time [dateFrom]="experience.BeginDate" [dateTo]="experience.EndDate" [currentEmployer]="experience.CurrentEmployer">
+        </app-experience-work-time>
+
+
+        <h3 class="experience__body__title">{{experience.Employer}}</h3>
+        <h3 class="experience__body__position">{{experience.Position}}</h3>
+        <app-experience-responsibilities [responsibilities]="experience.Responsibilities">
+        </app-experience-responsibilities>
+        <app-experience-skills [skills]="experience.Skills" [onAdd]="onSkillClick"></app-experience-skills>
+      </div>
+
+    </div>
+
+    <div class="col-2 center-margins" *ngIf="experience.Projects.length > 0">
+      <div class="experience__projects__button" [ngClass]="{'active': showProjects}" (click)="toggleProjects()">
+        <i class="fa fa-list"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-5 animated" [ngClass]="{'zoomIn': showProjects, 'hide fadeOut': !showProjects}" *ngIf="experience.Projects.length > 0 && initShow">
+  <div class="experience__projects__body">
+    <div class="experience__content">
+      <div class="experience__text__date">Projects</div>
+      <div *ngFor="let project of experience.Projects">
+        <app-experience-projects [title]="project.Title" [role]="project.Role" [descrtiption]="project.Description"
+          [result]="project.Result"></app-experience-projects>
+      </div>
+    </div>
+  </div>
+</div>

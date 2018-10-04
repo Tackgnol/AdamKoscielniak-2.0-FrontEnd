@@ -28,16 +28,6 @@ export class ExperienceComponent implements OnInit {
   skills = Array<string>();
   loading: boolean;
 
-  onSkillClick = skill => {
-    this.filters.addSkillToFilter(skill);
-    // .subscribe(
-    //   r => {
-    //     this.skills.push(skill);
-    //     this.loadData();
-    //   }
-    // );
-  }
-
 
   loadData = () => {
     this.loading = true;
