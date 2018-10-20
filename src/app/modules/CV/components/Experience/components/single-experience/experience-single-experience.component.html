@@ -16,19 +16,19 @@
     </div>
 
     <div class="col-2 center-margins" *ngIf="experience.Projects.length > 0">
-      <div class="experience__projects__button" [ngClass]="{'active': showProjects}" (click)="toggleProjects()">
+      <div [@flip]="showProjects ? 'selected' : 'deselected'" class="experience__projects__button" [ngClass]="{'active': showProjects}"
+        (click)="toggleProjects()">
         <i class="fa fa-list"></i>
       </div>
     </div>
   </div>
 </div>
-<div class="col-5 animated" [ngClass]="{'zoomIn': showProjects, 'hide fadeOut': !showProjects}" *ngIf="experience.Projects.length > 0 && initShow">
+<div class="col-5" @slide *ngIf="experience.Projects.length > 0 && showProjects">
   <div class="experience__projects__body">
     <div class="experience__content">
       <div class="experience__text__date">Projects</div>
       <div *ngFor="let project of experience.Projects">
-        <app-experience-projects [title]="project.Title" [role]="project.Role" [descrtiption]="project.Description"
-          [result]="project.Result"></app-experience-projects>
+        <app-projects [title]="project.Title" [role]="project.Role" [descrtiption]="project.Description" [result]="project.Result"></app-projects>
       </div>
     </div>
   </div>

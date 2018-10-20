@@ -115,6 +115,10 @@
   background-color: $background-main-color;
 }
 
+.experience__projects__contents {
+  overflow: hidden !important;
+}
+
 .experience__projects__header {
   color: $font-main-color;
   font-family: $font-family;
@@ -155,15 +159,12 @@
   border-radius: $border-radius-large;
   width: 50px;
   height: 50px;
-  margin: auto auto
+  margin: auto auto;
+  transform-style: preserve-3d;
 }
 
 .center-margins {
   margin: auto auto
-}
-
-.hide {
-  opacity: 0;
 }
 
 .active {

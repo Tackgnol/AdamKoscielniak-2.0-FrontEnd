@@ -2,15 +2,17 @@
   <a class="closebtn" (click)="toggle()">&times;</a>
   <a [routerLink]="['../Admin']">Main</a>
   <a [routerLink]="['Experience']">Experiences</a>
-  <a>Education</a>
-  <a>Skills</a>
+  <a [routerLink]="['Education']">Education</a>
+  <a [routerLink]="['Skill']">Skills</a>
 </div>
 
 <section class="section education-section" [class.main-show]="showSideBar">
   <h2 class="section-title">Admin Panel</h2>
-  <router-outlet></router-outlet>
-  <a class="float" (click)="toggle()" [class.float-nav]="showSideBar" [ngSwitch]="showSideBar">
-    <i *ngSwitchCase="false" class="fa fa-plus my-float"></i>
-    <i *ngSwitchCase="true" class="fa fa-times my-float"></i>
-  </a>
+  <div class="row"> <a [routerLink]="['../Admin']">
+      <- Go back</a> </div> <router-outlet>
+        </router-outlet>
+        <a class="float" (click)="toggle()" [class.float-nav]="showSideBar" [ngSwitch]="showSideBar">
+          <i *ngSwitchCase="false" class="fa fa-plus my-float"></i>
+          <i *ngSwitchCase="true" class="fa fa-times my-float"></i>
+        </a>
 </section>

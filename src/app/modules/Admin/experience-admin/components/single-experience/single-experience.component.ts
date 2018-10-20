@@ -1,5 +1,5 @@
 import { ConfirmationModalComponent } from './../../../../../../utils/components/confirmation-modal/confirmation-modal.component';
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Experience } from 'src/models/Experience';
 import { ExperienceService } from 'src/services/experience-service.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -21,30 +21,30 @@ export class SingleExperienceComponent implements OnInit {
 
   toggle = () => {
     this.show = !this.show;
-  };
+  }
 
   constructor(
     private expService: ExperienceService,
     private modalService: BsModalService
-  ) {}
+  ) { }
 
   delete = () => {
     this.expService.deleteExperience(this.experience.Id).subscribe(() => {
       this.removed = true;
     });
-  };
+  }
 
   openModalWithComponent() {
     const initialState = {
       dangerousFunction: this.delete,
       message: `Remove experience id: ${this.experience.Id} - ${
         this.experience.Employer
-      }-${this.experience.Position}`
+        }-${this.experience.Position}`
     };
     this.modalRef = this.modalService.show(ConfirmationModalComponent, {
       initialState
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

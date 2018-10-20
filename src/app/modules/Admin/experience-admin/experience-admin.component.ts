@@ -24,7 +24,6 @@ export class ExperienceAdminComponent implements OnInit {
       data => {
         this.experiences = data.Value.map(e => {
           const exp = new Experience(e);
-          console.log(exp);
           return exp;
         });
         this.loading = false;

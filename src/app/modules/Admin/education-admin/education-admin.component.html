@@ -1,0 +1,13 @@
+<h3 class="section-title">Experiences</h3>
+<h1>Add new Education</h1>
+<div class="card-body">
+  <app-education-form [newEducation]="true"></app-education-form>
+</div>
+<div *ngIf="loading">
+  <spinner></spinner>
+</div>
+<h1>Edit education</h1>
+<div *ngFor="let education of educations">
+  <app-admin-single-education [education]="education">
+  </app-admin-single-education>
+</div>

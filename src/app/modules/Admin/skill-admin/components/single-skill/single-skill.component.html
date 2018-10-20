@@ -1,0 +1,21 @@
+<div class="card mt-1" [class.removed]="removed">
+  <div class="card-header">
+
+    <span class="text-left float-left cut-title">{{skill.Name}}</span>
+
+    <span class="float-right">
+      <button (click)="toggle()" class="btn" aria-expanded="true" aria-controls="collapseOne">
+        <i class="fa fa-pencil"></i>
+      </button>
+      <button (click)="openModalWithComponent()" class="btn" aria-expanded="true" aria-controls="collapseOne">
+        <i class="fa fa-remove"></i>
+      </button>
+    </span>
+  </div>
+
+  <div class="collapse" [class.show]="show" aria-labelledby="headingOne">
+    <div class="card-body">
+      <app-skill-form [newSkill]="false" [skill]="skill"></app-skill-form>
+    </div>
+  </div>
+</div>

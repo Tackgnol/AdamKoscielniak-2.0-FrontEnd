@@ -17,7 +17,6 @@ export class ExperienceComponent implements OnInit {
   ) {
     this.filters.skillFilters.subscribe(
       r => {
-        console.log(r);
         this.skills = r;
         this.loadData();
       }

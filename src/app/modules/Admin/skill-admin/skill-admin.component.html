@@ -1,0 +1,12 @@
+<h3 class="section-title">Skills</h3>
+<h1>Add new skill</h1>
+<div class="card-body">
+  <app-skill-form [newSkill]="true"></app-skill-form>
+</div>
+<h1>Edit skills</h1>
+<div *ngIf="loading">
+  <spinner></spinner>
+</div>
+<div *ngFor="let skillGroup of skillGroups">
+  <app-admin-single-skill [skill]="skillGroup"></app-admin-single-skill>
+</div>

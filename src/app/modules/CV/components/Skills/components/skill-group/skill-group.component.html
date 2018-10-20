@@ -1,0 +1,9 @@
+<div class="skill__container">
+  <div class="row">
+    <H1 class="skill__group__name">{{skillGroup.Name}} </H1>
+  </div>
+  <div *ngFor="let skill of skillGroup.Skills">
+    <app-single-skill class="row" [skill]="skill"></app-single-skill>
+  </div>
+
+</div>
