@@ -1,7 +1,19 @@
 @import './main.scss';
 
+.skills__backgound {
+  background: $background-main-color;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .skills__timeline {
   margin-left: 75px;
+}
+
+@media (max-width: 767px) {
+  .skills__timeline {
+    margin-left: 30px;
+  }
 }
 
 .skill__group__name {

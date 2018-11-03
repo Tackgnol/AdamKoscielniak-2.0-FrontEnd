@@ -24,6 +24,9 @@ export class ProjectsComponent implements OnInit {
   @Input()
   result: String;
 
+  @Input()
+  alwaysShow = false;
+
   show: Boolean;
 
   toggleProject = () => {

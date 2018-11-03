@@ -1,14 +1,14 @@
-<section id="education-section" class="education__background">
-
-  <h2 class="section-title section__heading">My Education</h2>
-  <div *ngIf="loading">
-    <spinner></spinner>
-  </div>
-  <div class="experience__timeline">
-    <div *ngFor="let education of educations">
-      <app-education-single-education [education]="education" class="row">
-      </app-education-single-education>
+<section id="education-section" class="education__background ">
+  <div class="container">
+    <h2 class="section-title section__heading">My Education</h2>
+    <div *ngIf="loading">
+      <spinner></spinner>
+    </div>
+    <div class="education__timeline ml-md-5 ml-sm-0">
+      <div *ngFor="let education of educations">
+        <app-education-single-education [education]="education" class="row">
+        </app-education-single-education>
+      </div>
     </div>
   </div>
-
 </section>

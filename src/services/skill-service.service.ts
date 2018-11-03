@@ -15,7 +15,7 @@ import SkillGroup from 'src/models/SkillGroup';
 })
 export class SkillService extends BaseService {
   constructor(http: HttpClient) {
-    super('http://127.0.0.1:5000/skill', http);
+    super('/skill', http);
   }
 
   getSkillGroup(id: number) {

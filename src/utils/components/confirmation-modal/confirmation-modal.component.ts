@@ -8,21 +8,24 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./confirmation-modal.component.css']
 })
 export class ConfirmationModalComponent implements OnInit {
-  constructor(private bsModalRef: BsModalRef) {}
+  constructor(bsModalRef: BsModalRef) {
+    this.modalRef = bsModalRef;
+  }
 
   @Input()
   dangerousFunction: Function;
   @Input()
   message: string;
+  modalRef: BsModalRef;
 
   confirm = () => {
     this.dangerousFunction();
-    this.bsModalRef.hide();
+    this.modalRef.hide();
   };
 
   decline = () => {
-    this.bsModalRef.hide();
+    this.modalRef.hide();
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

@@ -5,6 +5,8 @@
   font-family: $font-family;
   font-size: $font-size-medium;
   font-weight: $font-weight-regular;
+  padding-top: 35px;
+  text-align: center;
 }
 
 *,
@@ -64,7 +66,6 @@
   border-top-right-radius: 2px;
   position: relative;
   padding: 0 30px;
-  margin-left: 75px;
 }
 
 .experience__body {
@@ -113,6 +114,7 @@
   border-radius: $border-radius-medium;
   border: $basic-border;
   background-color: $background-main-color;
+  width: 100%;
 }
 
 .experience__projects__contents {
@@ -163,11 +165,13 @@
   transform-style: preserve-3d;
 }
 
+
+
 .center-margins {
   margin: auto auto
 }
 
-.active {
+.experience__active {
   background: $header-accent-color;
   color: $background-main-color;
 }
@@ -181,4 +185,18 @@
 .experience__body__point {
   border: $bold-border;
   background-color: $header-accent-color;
+}
+
+@media (max-width: 767px) {
+  .experience__body {
+    margin-bottom: 20px;
+  }
+
+  .experience__projects__button {
+    margin-bottom: 20px;
+  }
+
+  .experience__projects__body {
+    margin-bottom: 20px;
+  }
 }

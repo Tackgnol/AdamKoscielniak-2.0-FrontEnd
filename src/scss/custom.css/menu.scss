@@ -1,0 +1,54 @@
+@import './main.scss';
+
+.menu__background {
+  background: $header-accent-color;
+  min-height: 120px;
+}
+
+.menu__item {
+  cursor: pointer;
+  margin: auto 10px;
+  color: $background-main-color;
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  font-weight: $font-weight-light;
+}
+
+.menu__item--selected {
+  cursor: pointer;
+  margin: auto 10px;
+  color: $background-main-color;
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  font-weight: $font-weight-bold;
+}
+
+.menu__item--special {
+  cursor: pointer;
+  margin: auto 10px;
+  color: $background-main-color;
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  border: $bold-border;
+  border-radius: $border-radius-large;
+  padding: 5px 5px;
+}
+
+@media (max-width: 767px) {
+  .menu__background {
+    background: $header-accent-color;
+    min-height: 70px;
+  }
+
+  .menu__item {
+    margin-top: 5px;
+  }
+
+  .menu__item--selected {
+    margin-top: 5px;
+  }
+
+  .menu__item--special {
+    margin-top: 5px;
+  }
+}

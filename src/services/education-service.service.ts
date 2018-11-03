@@ -12,7 +12,7 @@ import IEducation from '../models/interface/IEductation';
 })
 export class EducationService extends BaseService {
   constructor(http: HttpClient) {
-    super('http://127.0.0.1:5000/education', http);
+    super('/education', http);
   }
 
   getEducation(id: number) {

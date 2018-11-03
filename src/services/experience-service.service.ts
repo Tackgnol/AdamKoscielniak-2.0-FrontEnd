@@ -12,10 +12,10 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class ExperienceService extends BaseService {
   constructor(http: HttpClient) {
-    super('http://127.0.0.1:5000/experience', http);
+    super('/experience', http);
   }
 
-  getExperience(id: number) {
+  getExperience(id: any) {
     return this.getOne<Experience>(id).pipe(
       map(r => {
         return r;
@@ -40,7 +40,7 @@ export class ExperienceService extends BaseService {
   }
 
   updateExperience(id: number, body: IExperience) {
-    return this.put(body, String(id)).pipe(
+    return this.post(body, String(id)).pipe(
       map(r => r),
       catchError(e => {
         throw e.error.Errors;

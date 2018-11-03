@@ -17,20 +17,24 @@
 
 
     </div>
-    <div class="col-2 center-margins" *ngIf="education.Projects.length > 0">
-      <div [@flip]="showProjects ? 'selected' : 'deselected'" class="education__projects__button" [ngClass]="{'active': showProjects}"
+    <div class="col-md-2 col-sm-12 center-margins" *ngIf="education.Projects.length > 0">
+      <div [@flip]="showProjects ? 'selected' : 'deselected'" class="education__projects__button" [ngClass]="{'education__active': showProjects}"
         (click)="toggleProjects()">
-        <i class="fa fa-list"></i>
+        <i class="fas fa-list-ul"></i>
       </div>
     </div>
   </div>
 </div>
-<div class="col-5" @slide *ngIf="education.Projects.length > 0 && showProjects">
-  <div class="education__projects__body">
-    <div class="education__content">
-      <div class="education__text__date">Projects</div>
-      <div *ngFor="let project of education.Projects">
-        <app-projects [title]="project.Title" [role]="project.Role" [descrtiption]="project.Description" [result]="project.Result"></app-projects>
+<div class="col-md-5 col-sm-12">
+  <div class="row">
+    <div @slide *ngIf="education.Projects.length > 0 && showProjects">
+      <div class="education__projects__body">
+        <div class="education__content">
+          <div class="education__text__date">Projects</div>
+          <div *ngFor="let project of education.Projects">
+            <app-projects [title]="project.Title" [role]="project.Role" [descrtiption]="project.Description" [result]="project.Result"></app-projects>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,37 @@
+@import './main.scss';
+
+.hobby__background {
+  background: $background-accent-color;
+  padding-top: 30px;
+}
+
+.hobby__timeline {
+  margin-left: 75px;
+}
+
+@media (max-width: 767px) {
+  .hobby__timeline {
+    margin-left: auto;
+  }
+}
+
+
+.hobby__content__icon {
+  font-size: $font-size-large;
+}
+
+.hobby__content__header {
+  color: $header-accent-color;
+  font-family: $font-family;
+  font-size: $font-size-small;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.hobby__content__text {
+  color: $header-accent-color;
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  font-weight: $font-weight-light;
+  line-height: 24px;
+}

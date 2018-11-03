@@ -10,8 +10,10 @@ import { IHeader } from '../models/interface/IHeader';
 
 
 export class BaseService {
-  constructor(private url: string, private http: HttpClient) { }
-
+  constructor(private url: string, private http: HttpClient) {
+    this.url = this.baseUrl + url;
+  }
+  baseUrl = 'http://127.0.0.1:5000';
   generateHeaders = (input: Array<IHeader>): Headers => {
     const headers = new Headers();
 
@@ -28,6 +30,7 @@ export class BaseService {
       })
     );
   }
+
 
   getMany<T>(queryParametrs) {
 

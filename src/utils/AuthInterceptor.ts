@@ -1,3 +1,4 @@
+import { isNil, isEmpty } from 'lodash';
 import { Router } from '@angular/router';
 import {
   switchMap,
@@ -13,7 +14,7 @@ import {
   HttpHandler,
   HttpErrorResponse
 } from '@angular/common/http';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpRequest } from '@angular/common/http';
 import { AuthService } from './../services/auth-service.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -26,14 +27,14 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) { }
 
   addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
-    return req.clone({ setHeaders: { Authorization: 'Bearer ' + token } });
+    if (!token) {
+      return req;
+    }
+    return req.clone({ setHeaders: { authorization: 'Bearer ' + token } });
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return next.handle(this.addToken(req, this.authService.authToken)).pipe(
-      tap((event: HttpEvent<any>) => {
-        return event;
-      }),
       catchError(e => {
         if (e instanceof HttpErrorResponse) {
           switch ((<HttpErrorResponse>e).status) {
@@ -59,28 +60,21 @@ export class AuthInterceptor implements HttpInterceptor {
     if (!this.isRefreshingToken) {
       this.isRefreshingToken = true;
       this.tokenSubject.next(null);
-
       return this.authService.refreshTokens().pipe(
-        switchMap((newToken: ITokens) => {
-          if (newToken) {
-            this.tokenSubject.next(newToken.access_token);
-            localStorage.setItem('authToken', newToken.access_token);
-            localStorage.setItem('refreshToken', newToken.refresh_token);
-            return next.handle(this.addToken(req, newToken.access_token));
+        switchMap((newToken: string) => {
+          if (!isEmpty(newToken)) {
+            this.tokenSubject.next(newToken);
+            localStorage.setItem('access_token', newToken);
+            return next.handle(this.addToken(req, newToken));
           }
         }),
-        tap(
-          catchError(e => {
-            return this.authService.logout();
-          })
-        ),
         finalize(() => {
           this.isRefreshingToken = false;
         })
       );
     } else {
       return this.tokenSubject.pipe(
-        filter(token => token != null),
+        filter(token => !isNil(token)),
         take(1),
         switchMap(token => {
           return next.handle(this.addToken(req, token));

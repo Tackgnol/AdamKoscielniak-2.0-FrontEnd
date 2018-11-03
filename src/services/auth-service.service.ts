@@ -1,11 +1,13 @@
+import { Router } from '@angular/router';
 import { ITokens } from './../models/interface/ITokens';
 import { Tokens } from './../models/Tokens';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './../utils/baseService';
 import { Injectable } from '@angular/core';
 import { map, catchError, tap } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IServerResponse } from '../utils/IServerResponse';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ export class AuthService extends BaseService {
   public authToken: string;
   public refreshToken: string;
 
-  constructor(http: HttpClient) {
-    super('http://127.0.0.1:5000', http);
+  constructor(http: HttpClient, private router: Router) {
+    super('', http);
     this.refreshToken = localStorage.getItem('refreshToken');
     this.authToken = localStorage.getItem('authToken');
   }
@@ -46,7 +48,9 @@ export class AuthService extends BaseService {
     this.authToken = this.refreshToken;
     return this.post<Tokens>(body, 'refresh').pipe(
       map((r: IServerResponse) => {
-        return r.Value;
+        localStorage.setItem('authToken', r.Value.access_token);
+        localStorage.setItem('refreshToken', r.Value.refresh_token);
+        return r.Value.access_token;
       })
     );
   }
@@ -54,6 +58,6 @@ export class AuthService extends BaseService {
   logout = () => {
     localStorage.setItem('authToken', null);
     localStorage.setItem('refreshToken', null);
-    return Observable.create('logout successfull');
+    this.router.navigate(['/login']);
   }
 }

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import Project from 'src/models/submodels/Project';
 import { ErrorsToList } from 'src/utils/ErrorsToList';
 import gradeConverter from 'src/utils/GradeConverter';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-education-form',
@@ -14,7 +15,7 @@ import gradeConverter from 'src/utils/GradeConverter';
 })
 export class EducationFormComponent implements OnInit {
 
-  constructor(private eduServ: EducationService, private toastr: ToastrService) { }
+  constructor(private eduServ: EducationService, private toastr: ToastrService, private datePipe: DatePipe) { }
 
 
   @Input()
@@ -42,8 +43,8 @@ export class EducationFormComponent implements OnInit {
       Thesis: currentState.Thesis,
       GradeEu: currentState.GradeEu,
       GradeUs: gradeConverter(currentState.GradeEu),
-      BeginDate: currentState.getBeginDate,
-      EndDate: currentState.getEndDate,
+      BeginDate: this.datePipe.transform(currentState.getBeginDate, 'yyyy-MM-dd'),
+      EndDate: this.datePipe.transform(currentState.getEndDate, 'yyyy-MM-dd'),
       Projects: currentState.Projects
     };
 

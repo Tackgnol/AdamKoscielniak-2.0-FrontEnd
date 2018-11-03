@@ -32,10 +32,6 @@
   box-sizing: border-box;
 }
 
-.education__timeline .education__body {
-  position: relative;
-  margin-bottom: 45px;
-}
 
 .education__point:before {
   content: "";
@@ -83,8 +79,8 @@
   border-top-right-radius: 2px;
   position: relative;
   padding: 0 30px;
-  margin-left: 75px;
 }
+
 
 .education__body {
   border-radius: $border-radius-medium;
@@ -92,6 +88,20 @@
   background-color: $background-accent-color;
   margin-bottom: 50px;
   display: table;
+}
+
+
+.education__projects__button {
+  text-align: center;
+  font-size: $font-size-medium;
+  border: $basic-border;
+  background: $background-accent-color;
+  color: $header-accent-color;
+  border-radius: $border-radius-large;
+  width: 50px;
+  height: 50px;
+  margin: auto auto;
+  transform-style: preserve-3d;
 }
 
 .education__content {
@@ -169,24 +179,11 @@
   color: $font-main-color;
 }
 
-.education__projects__button {
-  text-align: center;
-  font-size: $font-size-medium;
-  border: $basic-border;
-  background: $background-main-color;
-  color: $header-accent-color;
-  border-radius: $border-radius-large;
-  width: 50px;
-  height: 50px;
-  margin: auto auto;
-  transform-style: preserve-3d;
-}
-
 .center-margins {
   margin: auto auto
 }
 
-.active {
+.education__active {
   background: $header-accent-color;
   color: $background-main-color;
 }
@@ -200,4 +197,18 @@
 .education__body__point {
   border: $bold-border;
   background-color: $header-accent-color;
+}
+
+@media (max-width: 767px) {
+  .education__body {
+    margin-bottom: 20px;
+  }
+
+  .education__projects__button {
+    margin-bottom: 20px;
+  }
+
+  .education__projects__body {
+    margin-bottom: 20px;
+  }
 }

@@ -14,7 +14,7 @@ import { slide, flip } from 'src/utils/Animations';
 })
 export class ExperienceSingleExperienceComponent implements OnInit {
 
-  constructor(private filters: FilterService) { }
+  constructor() { }
 
   @Input()
   experience: Experience;
@@ -25,9 +25,7 @@ export class ExperienceSingleExperienceComponent implements OnInit {
     this.showProjects = !this.showProjects;
   }
 
-  onSkillClick = skill => {
-    this.filters.addSkillToFilter(skill);
-  }
+
 
   ngOnInit() {
   }

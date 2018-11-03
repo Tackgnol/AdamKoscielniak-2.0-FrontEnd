@@ -1,3 +1,4 @@
+import { ExperienceProjectsComponent } from './modules/CV/components/Experience/components/experience-projects/experience-projects.component';
 import { SkillService } from 'src/services/skill-service.service';
 import { EducationService } from 'src/services/education-service.service';
 import { SingleEducationAdminComponent } from './modules/Admin/education-admin/components/single-education/single-education.component';
@@ -19,14 +20,12 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { QuillModule } from 'ngx-quill';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { AppComponent } from './app.component';
-
+import { DragScrollModule } from 'ngx-drag-scroll';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ExperienceComponent } from './modules/CV/components/Experience/experience.component';
 import { LoginFormComponent } from './modules/Login/components/login-form/login-form.component';
-import { CommonModule } from '../../node_modules/@angular/common';
+import { CommonModule, DatePipe } from '../../node_modules/@angular/common';
 import { Routes, RouterModule } from '../../node_modules/@angular/router';
 import { CVMainComponent } from './modules/CV/cv.component';
 import { ExperienceResponsibilitiesComponent } from './modules/CV/components/Experience/components/experience-responsibilities/experience-responsibilities.component';
@@ -57,10 +56,26 @@ import { SkillAdminComponent } from './modules/Admin/skill-admin/skill-admin.com
 import { SkillFormComponent } from './modules/Admin/skill-admin/components/skill-form/skill-form.component';
 import { NewSkillComponent } from './modules/Admin/skill-admin/components/new-skill/new-skill.component';
 import { SingleSkillAdminComponent } from './modules/Admin/skill-admin/components/single-skill/single-skill.component';
+import { HobbiesComponent } from './modules/CV/components/Hobbies/hobbies.component';
+import { HobbyComponent } from './modules/CV/components/Hobbies/components/hobby/hobby.component';
+import { HobbyAdminComponent } from './modules/Admin/hobby-admin/hobby-admin.component';
+import { NewHobbyComponent } from './modules/Admin/hobby-admin/components/new-hobby/new-hobby.component';
+import { HobbyFormComponent } from './modules/Admin/hobby-admin/components/hobby-form/hobby-form.component';
+import { SingleHobbyComponent } from './modules/Admin/hobby-admin/components/single-hobby/single-hobby.component';
+import { MainComponent } from './modules/Main/main.component';
+import { MenuComponent } from './modules/Menu/menu.component';
+import { BackdropComponent } from './modules/Main/components/backdrop/backdrop.component';
+import { HelloComponent } from './modules/Main/components/hello/hello.component';
+import { MoreComponent } from './modules/Main/components/more/more.component';
+import { ExperienceCoreComponent } from './modules/CV/components/Experience/components/single-experience/experience-core/experience-core.component';
+import { SummaryComponent } from './modules/Main/components/summary/summary.component';
+import { SummaryElementComponent } from './modules/Main/components/summary/components/summary-element/summary-element.component';
+import { CVFooterComponent } from './modules/CV/components/cvfooter/cvfooter.component';
+import { DownloadCvComponent } from './components/download-cv/download-cv.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
-  { path: 'CV', component: CVMainComponent },
+  { path: '', component: CVMainComponent },
   {
     path: 'Admin',
     component: AdminComponent,
@@ -68,7 +83,8 @@ const appRoutes: Routes = [
       { path: '', component: MainAdminComponent },
       { path: 'Experience', component: ExperienceAdminComponent },
       { path: 'Education', component: EducationAdminComponent },
-      { path: 'Skill', component: SkillAdminComponent }
+      { path: 'Skill', component: SkillAdminComponent },
+      { path: 'Hobby', component: HobbyAdminComponent }
     ]
   }
 ];
@@ -106,22 +122,43 @@ const appRoutes: Routes = [
     SkillAdminComponent,
     SkillFormComponent,
     NewSkillComponent,
-    SingleSkillAdminComponent
+    SingleSkillAdminComponent,
+    HobbiesComponent,
+    HobbyComponent,
+    HobbyAdminComponent,
+    NewHobbyComponent,
+    HobbyFormComponent,
+    SingleHobbyComponent,
+    MainComponent,
+    MenuComponent,
+    BackdropComponent,
+    HelloComponent,
+    MoreComponent,
+    ExperienceCoreComponent,
+    ExperienceProjectsComponent,
+    SummaryComponent,
+    SummaryElementComponent,
+    CVFooterComponent,
+    DownloadCvComponent
   ],
   imports: [
     ToastrModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      scrollOffset: [0, 64] // [x, y]
+    }),
     LaddaModule.forRoot({
       style: 'expand-left',
       spinnerSize: 40,
       spinnerColor: 'white',
       spinnerLines: 12
     }),
+    DragScrollModule,
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     QuillModule,
-    FlexLayoutModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -139,7 +176,8 @@ const appRoutes: Routes = [
       useClass: AuthInterceptor,
       multi: true
     },
-    FilterService
+    FilterService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
