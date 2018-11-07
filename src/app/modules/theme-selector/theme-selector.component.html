@@ -1,0 +1,6 @@
+<nav class="floating-menu">
+  <a *ngFor="let theme of themes" class="menu__item--special theme__button" [ngStyle]="{'background-color': theme.styles[0].value, 'color': theme.styles[3].value}"
+    role="button" (click)="global(theme.name)">
+    {{theme.name}}
+  </a>
+</nav>

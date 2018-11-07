@@ -1,7 +1,5 @@
-@import './main.scss';
-
 .flex-container {
-  background-color: $header-accent-color;
+  background-color: var(--background-strong-color);
   height: 100%;
   padding: 0;
   margin: 0;
@@ -24,7 +22,7 @@
   height: auto;
   margin: 10px;
   line-height: 20px;
-  color: white;
+  color: var(--text-strong-color);
   font-weight: bold;
   font-size: 2em;
   text-align: center;
@@ -33,7 +31,7 @@
 }
 
 .hello__text__small {
-  color: $background-main-color;
+  color: var(--text-strong-color);
   font-family: $font-family;
   font-size: $font-size-small;
   font-weight: $font-weight-ultra-light;
@@ -41,7 +39,7 @@
 }
 
 .hello__text__large {
-  color: $background-main-color;
+  color: var(--text-strong-color);
   font-family: $font-family;
   font-size: $font-size-very-large;
   font-weight: $font-weight-bold;
@@ -50,7 +48,7 @@
 
 @media (max-width: 767px) {
   .hello__text__large {
-    color: $background-main-color;
+    color: var(--text-strong-color);
     font-family: $font-family;
     font-size: $font-size-large;
     font-weight: $font-weight-bold;
@@ -63,7 +61,7 @@
   margin: auto auto;
   margin-top: 30px;
   width: 200px;
-  color: $background-main-color;
+  color: var(--text-strong-color);
   font-family: $font-family;
   font-size: $font-size-extra-small;
   border: $bold-border;

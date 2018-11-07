@@ -86,7 +86,6 @@ export class ExperienceFormComponent implements OnInit {
     };
 
     if (this.newExperience) {
-      console.log(toSend);
       this.expServ.newExperience(toSend).subscribe(
         () => this.toastr.info('Changes saved succefully'),
         e => this.toastr.error(e)

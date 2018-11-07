@@ -1,7 +1,5 @@
-@import './main.scss';
-
 .skills__backgound {
-  background: $background-main-color;
+  background: var(--background-light-color);
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -17,7 +15,7 @@
 }
 
 .skill__group__name {
-  color: $header-accent-color;
+  color: var(--text-light-color);
   font-family: $font-family;
   font-size: $font-size-small;
   font-weight: $font-weight-bold;
@@ -30,12 +28,12 @@
 }
 
 .skill__progress__black {
-  background-color: $header-accent-color;
+  background-color: var(--background-strong-color);
   height: 4px;
 }
 
 .skill__progress__gray {
-  background-color: $background-accent-color;
+  background-color: var(--background-medium-color);
   height: 4px;
   width: 100%;
 }
@@ -44,7 +42,7 @@
   font-size: $font-size-extra-small;
   font-weight: $font-weight-bold;
   font-family: $font-family;
-  color: $header-accent-color;
+  color: var(--text-light-color);
   line-height: 36px;
   padding-left: 0px !important;
 
@@ -54,7 +52,7 @@
   font-size: $font-size-extra-small;
   font-weight: $font-weight-regular;
   font-family: $font-family;
-  color: $header-accent-color;
+  color: var(--text-light-color);
   line-height: 36px;
   padding-right: 0px !important;
 

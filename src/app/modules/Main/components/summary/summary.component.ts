@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import ISummaryItem from 'src/models/interface/ISummaryItem';
 import { SummaryService } from 'src/services/summary-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { FilterService } from 'src/services/filter.service';
+import { DragScrollComponent } from 'ngx-drag-scroll/lib';
 
 
 @Component({
@@ -25,6 +26,15 @@ export class SummaryComponent implements OnInit {
   skills = Array<string>();
   summaryItems = Array<ISummaryItem>();
 
+  @ViewChild('items', { read: DragScrollComponent }) ds: DragScrollComponent;
+
+  moveLeft() {
+    this.ds.moveLeft();
+  }
+
+  moveRight() {
+    this.ds.moveRight();
+  }
 
   loadData = () => {
     this.loading = true;

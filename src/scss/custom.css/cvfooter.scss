@@ -1,8 +1,6 @@
-@import './main.scss';
-
 .cvfooter__section {
   height: 370px;
-  background-image: url('/assets/lake-gs.jpg');
+  background-image: var(--footer-image);
   display: flex;
   align-items: center;
   justify-content: center;

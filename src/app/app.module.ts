@@ -72,6 +72,7 @@ import { SummaryComponent } from './modules/Main/components/summary/summary.comp
 import { SummaryElementComponent } from './modules/Main/components/summary/components/summary-element/summary-element.component';
 import { CVFooterComponent } from './modules/CV/components/cvfooter/cvfooter.component';
 import { DownloadCvComponent } from './components/download-cv/download-cv.component';
+import { ThemeSelectorComponent } from './modules/theme-selector/theme-selector.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -139,14 +140,14 @@ const appRoutes: Routes = [
     SummaryComponent,
     SummaryElementComponent,
     CVFooterComponent,
-    DownloadCvComponent
+    DownloadCvComponent,
+    ThemeSelectorComponent
   ],
   imports: [
     ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
-      scrollOffset: [0, 64] // [x, y]
+      anchorScrolling: 'enabled'
     }),
     LaddaModule.forRoot({
       style: 'expand-left',

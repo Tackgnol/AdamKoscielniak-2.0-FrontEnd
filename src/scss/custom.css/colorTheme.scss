@@ -1,0 +1,27 @@
+// default colors
+.theme-wrapper {
+  --background-strong-color: #000000;
+  --background-medium-color: #f8f9fa;
+  --background-light-color: #ffffff;
+  --text-strong-color: #ffffff;
+  --text-medium-color: #000000;
+  --text-light-color: #000000;
+  --text-strong-color-accent: #ffffff;
+  --text-medium-color-accent: #838383;
+  --text-light-color-accent: #838383;
+  --footer-image: url('/assets/lake-gs.jpg');
+  --summary-image: url('/assets/wave-GS.jpg');
+}
+
+// pass variables into a sass map
+$variables: (--background-strong-color: var(--background-strong-color),
+--background-medium-color: var(--background-medium-color),
+--background-light-color: var(--background-light-color),
+--text-strong-color: var(--text-strong-color),
+--text-medium-color: var(--text-medium-color),
+--text-light-color: var(--text-light-color),
+--text-strong-color-accent: var(--text-strong-color-accent),
+--text-medium-color-accent: var(--text-medium-color-accent),
+--text-light-color-accent: var(--text-light-color-accent),
+--footer-image: var(--footer-image),
+--summary-image: var(--summary-image));

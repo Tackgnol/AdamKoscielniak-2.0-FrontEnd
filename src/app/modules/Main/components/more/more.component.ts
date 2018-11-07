@@ -18,7 +18,6 @@ export class MoreComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.expService.getExperience('/current').subscribe(data => {
-      console.log(data);
       this.experience = data.Value;
       this.loading = false;
     });

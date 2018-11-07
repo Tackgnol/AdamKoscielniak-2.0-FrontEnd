@@ -30,7 +30,6 @@ export class ExperienceComponent implements OnInit {
 
   loadData = () => {
     this.loading = true;
-    console.log(this.skills);
     const experienceRequest = this.expService.getExperiences({ skills: this.skills });
     experienceRequest.subscribe(
       data => {

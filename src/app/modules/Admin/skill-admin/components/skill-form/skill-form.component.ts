@@ -62,7 +62,6 @@ export class SkillFormComponent implements OnInit {
   }
 
   addSkill = (name, proficiency) => {
-    console.log(name, proficiency);
     const skillName = name.value;
     const skillProficiency = proficiency.value;
     if (!isEmpty(skillName) && !isEmpty(skillProficiency)) {

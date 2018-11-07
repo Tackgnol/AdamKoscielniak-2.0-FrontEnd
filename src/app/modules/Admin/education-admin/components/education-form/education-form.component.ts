@@ -49,7 +49,6 @@ export class EducationFormComponent implements OnInit {
     };
 
     if (this.newEducation) {
-      console.log(toSend);
       this.eduServ.newEducation(toSend).subscribe(
         () => this.toastr.info('Changes saved succefully'),
         e => this.toastr.error(e)

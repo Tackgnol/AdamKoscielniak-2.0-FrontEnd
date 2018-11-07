@@ -1,7 +1,7 @@
 <div class="menu__background fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark menu__background container">
-    <a><svg id="SVGDoc" width="59" height="45" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns:avocode="https://avocode.com/" viewBox="0 0 59 45">
+    <a (click)="changeSelection(1)"><svg id="SVGDoc" width="59" height="45" xmlns="http://www.w3.org/2000/svg" version="1.1"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 59 45">
         <defs></defs>
         <desc>Generated with Avocode.</desc>
         <g transform="matrix(1,0,0,1,-406,-30)">
@@ -21,9 +21,11 @@
       <div class="navbar-nav">
         <a role="button" tabindex="0" [class.menu__item--selected]="item.id === selectedId" [class.menu__item]="item.id !== selectedId"
           *ngFor="let item of menuItems" (click)="changeSelection(item.id)">{{item.name}}</a>
-        <a irole="button" tabindex="0" class="menu__item--special">Go Social!</a>
+        <a role="button" tabindex="0" class="menu__item--special">Go Social!</a>
+
       </div>
     </div>
+
   </nav>
 
 </div>

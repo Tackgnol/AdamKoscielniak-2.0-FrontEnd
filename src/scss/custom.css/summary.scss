@@ -1,8 +1,6 @@
-@import './main.scss';
-
 .summary__section {
   height: 370px;
-  background-image: url('/assets/wave-GS.jpg');
+  background-image: var(--summary-image);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,13 +16,15 @@
   background: transparent;
 }
 
+.summary__carousel__button {
+
+  margin: auto auto
+}
 
 .summary__elements {
   height: 100%;
 
 }
-
-
 
 .summary__row {
   height: 100%;
@@ -33,19 +33,19 @@
 .summary__elemeny__body {
   padding: 30px;
   border-radius: $border-radius-medium;
-  border: 1px dashed $border-main-color;
+  border: 1px dashed var(--text-strong-color-accent);
   text-align: center;
 }
 
 .summary_element__icon {
-  color: $background-main-color;
+  color: var(--background-light-color);
   width: 100%;
   font-size: $font-size-large;
 }
 
 .summary_element__count {
   padding-top: 20px;
-  color: $background-main-color;
+  color: var(--text-strong-color);
   font-family: $font-family;
   font-size: $font-size-large;
   font-weight: $font-weight-bold;
@@ -55,7 +55,7 @@
 
 .summary_element__name {
   padding-top: 15px;
-  color: $background-main-color;
+  color: var(--text-strong-color);
   font-family: $font-family;
   font-size: $font-size-extra-small;
   font-weight: $font-weight-light;
