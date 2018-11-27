@@ -47,9 +47,8 @@
     <div class="col-md-6 col-xs-12">
       <div class="form-group">
         <label for="employer">EndDate</label>
-        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker id="getEndDate" required
-          [(ngModel)]="model.getEndDate" name="getEndDate" #getEndDate="ngModel" />
-        <div [hidden]="getEndDate.valid || getEndDate.pristine" class="alert alert-danger">BeginDate is required</div>
+        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker id="getEndDate" [(ngModel)]="model.getEndDate"
+          name="getEndDate" #getEndDate="ngModel" />
       </div>
     </div>
   </div>

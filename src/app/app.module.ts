@@ -1,3 +1,4 @@
+import { AuthGuard } from './../utils/AuthGuard';
 import { ExperienceProjectsComponent } from './modules/CV/components/Experience/components/experience-projects/experience-projects.component';
 import { SkillService } from 'src/services/skill-service.service';
 import { EducationService } from 'src/services/education-service.service';
@@ -41,7 +42,6 @@ import { ConfirmationModalComponent } from '../utils/components/confirmation-mod
 import { ModalModule, BsDropdownModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ExperienceFormComponent } from './modules/Admin/experience-admin/components/experience-form/experience-form.component';
-import { FilterComponent } from './modules/CV/components/filter/filter.component';
 import { ProjectsComponent } from './modules/CV/components/Projects/projects.component';
 import { ExperienceSingleExperienceComponent } from 'src/app/modules/CV/components/Experience/components/single-experience/experience-single-experience.component';
 import { SingleEducationComponent } from './modules/CV/components/Education/components/single-education/single-education.component';
@@ -73,6 +73,8 @@ import { SummaryElementComponent } from './modules/Main/components/summary/compo
 import { CVFooterComponent } from './modules/CV/components/cvfooter/cvfooter.component';
 import { DownloadCvComponent } from './components/download-cv/download-cv.component';
 import { ThemeSelectorComponent } from './modules/theme-selector/theme-selector.component';
+import { FilterComponent } from './modules/CV/components/filter/filter.component';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -80,6 +82,7 @@ const appRoutes: Routes = [
   {
     path: 'Admin',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: MainAdminComponent },
       { path: 'Experience', component: ExperienceAdminComponent },
@@ -109,7 +112,6 @@ const appRoutes: Routes = [
     NewExperienceComponent,
     ConfirmationModalComponent,
     ExperienceFormComponent,
-    FilterComponent,
     ProjectsComponent,
     SingleEducationComponent,
     SingleEducationAdminComponent,
@@ -141,7 +143,8 @@ const appRoutes: Routes = [
     SummaryElementComponent,
     CVFooterComponent,
     DownloadCvComponent,
-    ThemeSelectorComponent
+    ThemeSelectorComponent,
+    FilterComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -169,6 +172,7 @@ const appRoutes: Routes = [
   entryComponents: [ConfirmationModalComponent],
   providers: [
     AuthService,
+    AuthGuard,
     ExperienceService,
     EducationService,
     SkillService,

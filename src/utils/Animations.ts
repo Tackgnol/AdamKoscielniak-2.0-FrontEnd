@@ -11,10 +11,10 @@ export const slide = trigger('slide', [
 ]);
 
 export const fade = trigger('fade', [
-    state('void', style({ opacity: 0 })),
+    state('void', style({ opacity: 0, height: 0 })),
 
     transition(':enter, :leave', [
-        animate(1000)
+        animate(500)
     ])
 ]);
 

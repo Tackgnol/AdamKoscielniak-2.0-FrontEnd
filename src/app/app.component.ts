@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+import cssVars from 'css-vars-ponyfill';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,7 @@ export class AppComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    cssVars();
+
   }
 }

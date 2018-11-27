@@ -1,5 +1,6 @@
 import { find } from 'lodash';
 import { Component, OnInit } from '@angular/core';
+import cssVars from 'css-vars-ponyfill';
 
 @Component({
   selector: 'app-theme-selector',
@@ -79,12 +80,15 @@ export class ThemeSelectorComponent implements OnInit {
 
   global(themeName) {
     const styleSheet = find(this.themes, t => t.name === themeName);
+    const variables = {};
     for (let i = 0; i < styleSheet.styles.length; i++) {
       const elem = styleSheet.styles[i];
       if (elem) {
         this.themeWrapper.style.setProperty(elem.name, elem.value);
+        variables[elem.name] = elem.value;
       }
     }
+    cssVars({variables:variables});
   }
 
   OnInit() {

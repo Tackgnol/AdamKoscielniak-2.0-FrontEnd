@@ -1,6 +1,6 @@
 import SkillGroup from 'src/models/SkillGroup';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { SkillService } from 'src/services/skill-service.service';
 
@@ -19,7 +19,6 @@ export class SkillsComponent implements OnInit {
   }
   loading = false;
   skills = Array<SkillGroup>();
-
 
   loadData = () => {
     this.loading = true;

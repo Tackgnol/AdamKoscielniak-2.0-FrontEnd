@@ -28,7 +28,7 @@ export class Experience implements IExperience {
     this.BeginDate = experience && experience.BeginDate || { $date: 0 };
     this.EndDate = experience && experience.EndDate || { $date: 0 };
     this.getBeginDate = experience && new Date(experience.BeginDate.$date) || new Date();
-    this.getEndDate = experience && new Date(experience.EndDate.$date) || new Date();
+    this.getEndDate = experience && experience.EndDate && new Date(experience.EndDate.$date) || new Date();
     this.Projects = experience && experience.Projects || [];
     this.Location = experience && experience.Location || null;
 
