@@ -28,7 +28,7 @@ export class SummaryComponent implements OnInit {
     );
   }
 
-  dateRange = ['2001-01-01', '2020-01-01'];
+  dateRange = ['2001-01-01', `${new Date().getFullYear()}-12-31`];
 
   loading: boolean;
   skills = Array<string>();

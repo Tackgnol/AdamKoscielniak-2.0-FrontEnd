@@ -8,7 +8,8 @@
       <div class="row">
         <nouislider class="no__ui__slider" [tooltips]="[ true, true ]" [connect]="true" [min]="2005" [max]="2019" [(ngModel)]="dateRange" [step]="1"></nouislider>
       </div>
-      <button (click)="filterDates()">Filter</button>
+      <button class="filter__button" (click)="filterDates()">Filter</button>
+      <h2 *ngIf="skills.length > 0">Skills</h2>
       <div class="row">
         <a *ngFor="let skill of skills">
           <span style="cursor: pointer" class="badge badge-secondary m-1" (click)="removeElement(skill)"><i class="fa fa-times"></i>
