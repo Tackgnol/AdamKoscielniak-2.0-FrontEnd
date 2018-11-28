@@ -1,24 +1,23 @@
 .filter {
   z-index: 8000;
   position: fixed;
-  width: 250px;
+  width: 270px;
   top: 200px;
-  right: -231px;
-
+  right: -211px;
   transition: all 300ms ease-in-out;
   text-align: center;
   vertical-align: middle;
-
 }
 
 .no__ui__slider {
-  width: 90%;
+  width: 80%;
 }
 
 .filter:hover {
   right: 15px;
   text-transform: none;
   text-decoration: none;
+  background: var(--background-medium-color);
 }
 
 .filter-item {
@@ -31,7 +30,9 @@
 
 .filter--icon {
   color: var(--text-medium-color-accent);
+  text-align: center;
   font-size: 40px;
+  padding: 10px;
 }
 
 .filter__header {

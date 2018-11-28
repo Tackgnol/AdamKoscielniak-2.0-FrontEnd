@@ -20,7 +20,15 @@ export class SummaryComponent implements OnInit {
         this.loadData();
       }
     );
+    this.filters.dateRange.subscribe(
+      r => {
+        this.dateRange = r;
+        this.loadData();
+      }
+    );
   }
+
+  dateRange = ['2001-01-01', '2020-01-01'];
 
   loading: boolean;
   skills = Array<string>();
@@ -38,7 +46,7 @@ export class SummaryComponent implements OnInit {
 
   loadData = () => {
     this.loading = true;
-    const experienceRequest = this.sumService.getCounts({ skills: this.skills });
+    const experienceRequest = this.sumService.getCounts({from: this.dateRange[0], to: this.dateRange[1], skills: this.skills });
     experienceRequest.subscribe(
       data => {
         this.summaryItems = data.Value;
