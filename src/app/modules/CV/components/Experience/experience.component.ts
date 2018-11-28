@@ -21,16 +21,30 @@ export class ExperienceComponent implements OnInit {
         this.loadData();
       }
     );
+    this.filters.fromDate.subscribe(
+      r => {
+        this.from = r;
+        this.loadData();
+      }
+    );
+    this.filters.toDate.subscribe(
+      r => {
+        this.to = r;
+        this.loadData();
+      }
+    );
   }
 
   experiences = Array<Experience>();
   skills = Array<string>();
+  from = '2001-01-01';
+  to = '2020-01-01';
   loading: boolean;
 
 
   loadData = () => {
     this.loading = true;
-    const experienceRequest = this.expService.getExperiences({ skills: this.skills });
+    const experienceRequest = this.expService.getExperiences({from: this.from, to: this.to, skills: this.skills });
     experienceRequest.subscribe(
       data => {
         this.experiences = data.Value;

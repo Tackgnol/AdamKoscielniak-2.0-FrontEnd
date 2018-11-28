@@ -4,7 +4,7 @@ import { SkillService } from 'src/services/skill-service.service';
 import { EducationService } from 'src/services/education-service.service';
 import { SingleEducationAdminComponent } from './modules/Admin/education-admin/components/single-education/single-education.component';
 import { FilterService } from './../services/filter.service';
-
+import { NouisliderModule } from 'ng2-nouislider';
 import { AuthService } from './../services/auth-service.service';
 import { AuthInterceptor } from './../utils/AuthInterceptor';
 import { SpinnerComponent } from './../utils/components/Spinner';
@@ -167,7 +167,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    NouisliderModule
   ],
   entryComponents: [ConfirmationModalComponent],
   providers: [

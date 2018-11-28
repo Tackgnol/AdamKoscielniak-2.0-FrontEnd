@@ -1,4 +1,4 @@
-import { FilterService } from './../../../../../services/filter.service';
+import { FilterService } from '../../../../../services/filter.service';
 import { Component, OnInit } from '@angular/core';
 
 import { findIndex, pullAt } from 'lodash';
@@ -12,18 +12,17 @@ export class FilterComponent implements OnInit {
 
   constructor(private filters: FilterService) { }
 
+  dateRange = [2011, 2019];
+
   skills = [];
 
   removeElement = skill => {
     this.filters.removeSkillFromFilter(skill);
-    // .subscribe(
-    //   r => {
-    //     const index = this.skills.indexOf(skill);
-    //     if (index > -1) {
-    //       this.skills.splice(index, 1);
-    //     }
-    //   }
-    // );
+  }
+
+  filterDates = () => {
+    this.filters.setFromDate(this.dateRange[0]);
+    this.filters.setToDate(this.dateRange[1]);
   }
 
   ngOnInit() {

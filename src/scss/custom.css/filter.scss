@@ -1,5 +1,5 @@
 .filter {
-  z-index: 7000;
+  z-index: 8000;
   position: fixed;
   width: 250px;
   top: 200px;
@@ -9,6 +9,10 @@
   text-align: center;
   vertical-align: middle;
 
+}
+
+.no__ui__slider {
+  width: 90%;
 }
 
 .filter:hover {
