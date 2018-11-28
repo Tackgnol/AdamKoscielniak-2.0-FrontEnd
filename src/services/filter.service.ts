@@ -7,28 +7,21 @@ import { from, Subject } from 'rxjs';
 export class FilterService {
 
   constructor() {
-    this.fromDate.next('2000-01-01');
-    this.toDate.next(`${new Date().getFullYear()}-12-31`);
+    this.dateRange.next(['2000-01-01', `${new Date().getFullYear()}-12-31`]);
   }
 
   private skills = [];
   skillFilters = new Subject<Array<string>>();
-  fromDate: Subject<string> = new Subject<string>();
-  toDate: Subject<string> = new Subject<string>();
-  dateRange = [this.fromDate, this.toDate];
+  dateRange =  new Subject<Array<string>>();
+
   addSkillToFilter = skill => {
     this.skills.push(skill);
     this.skillFilters.next(this.skills);
     return this.skillFilters;
   }
 
-  setFromDate = (fromDate: number) => {
-    this.fromDate.next(`${fromDate}-01-01`);
-  }
-
-
-  setToDate = (toDate: number) => {
-    this.toDate.next(`${toDate}-12-31`);
+  setNewRange = (newRange: Array<string>) => {
+    this.dateRange.next(newRange);
   }
 
   removeSkillFromFilter = skill => {

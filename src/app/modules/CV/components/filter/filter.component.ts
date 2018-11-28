@@ -10,7 +10,9 @@ import { findIndex, pullAt } from 'lodash';
 })
 export class FilterComponent implements OnInit {
 
-  constructor(private filters: FilterService) { }
+  constructor(private filters: FilterService) {
+    this.filterDates();
+  }
 
   dateRange = [2011, 2019];
 
@@ -21,8 +23,9 @@ export class FilterComponent implements OnInit {
   }
 
   filterDates = () => {
-    this.filters.setFromDate(this.dateRange[0]);
-    this.filters.setToDate(this.dateRange[1]);
+    const newRange = this.dateRange;
+    const rangeFormatted = [`${newRange[0]}-01-01`, `${newRange[1]}-12-31`]
+    this.filters.setNewRange(rangeFormatted);
   }
 
   ngOnInit() {
