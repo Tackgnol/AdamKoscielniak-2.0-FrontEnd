@@ -13,6 +13,33 @@
   width: 80%;
 }
 
+.noUi-connect {
+  background: var(--background-strong-color);
+}
+
+.noUi-handle {
+  border-radius: 8px;
+  background: var(--background-light-color);
+  cursor: pointer;
+  outline: none;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 20px;
+  height: 20px;
+  left: -5px;
+  top: -2px;
+}
+
+.noUi-handle:after, .noUi-handle:before {
+  display: none;
+}
+
+html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
+  right: -5px;
+  left: auto;
+}
+
 .filter:hover {
   right: 15px;
   text-transform: none;
