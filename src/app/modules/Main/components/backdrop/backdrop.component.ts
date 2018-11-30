@@ -9,11 +9,9 @@ import { fade } from 'src/utils/Animations';
   animations: [fade]
 })
 export class BackdropComponent implements OnInit, AfterViewInit {
-
-  constructor() { }
+  constructor() {}
 
   showConsole = true;
-
 
   typedString = 'pip install adamkoscielniak.eu.org';
 
@@ -21,13 +19,12 @@ export class BackdropComponent implements OnInit, AfterViewInit {
     await new Promise(resolve => setTimeout(() => resolve(), ms));
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   ngAfterViewInit() {
     const options = {
-      strings: [this.typedString +
-        '^1000<li> `installing Angular...`</li> ^1000<li>`installing Flask...`</li> ^1000<li> `installing mongoDb...`</li>',
+      strings: [
+        this.typedString +
+          '^1000<li> `installing Angular...`</li> ^1000<li>`installing Flask...`</li> ^1000<li> `installing mongoDb...`</li>',
         '<li> Fixing buuugs </li>',
         '<li> Fixing buggs </li>',
         '<li> Fixing vugs </li> <li> ...</li> <li> fixing bugs </li> <li> Checking for IE6</li> ',
@@ -35,11 +32,10 @@ export class BackdropComponent implements OnInit, AfterViewInit {
         '<li> Launching... /</li>',
         '<li> Launching... -</li>',
         '<li> Launching... \\</li>',
-        '<li> Launching... -</li>',
         '<li> Launching... |</li>',
         '<li> Launching... /</li>',
-        '<li> Launching...</li> <li>` App ready`</li>',
-
+        '<li> Launching... -</li>',
+        '<li> Launching...</li> <li>` App ready`</li>'
       ],
       typeSpeed: 40,
       backSpeed: 0,

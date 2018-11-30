@@ -1,7 +1,7 @@
 <div class="backdrop">
-  <div @fade *ngIf="showConsole" class="flex-container">
+  <div *ngIf="showConsole" class="flex-container">
 
-    <div class="shell-wrap">
+    <div @fade  class="shell-wrap">
       <p class="shell-top-bar">Website shell</p>
       <ul class="shell-body" id="console">
 
@@ -9,5 +9,5 @@
     </div>
   </div>
 
-  <app-hello @fade *ngIf="!showConsole"></app-hello>
+  <app-hello *ngIf="!showConsole"></app-hello>
 </div>

@@ -11,7 +11,7 @@ export const slide = trigger('slide', [
 ]);
 
 export const fade = trigger('fade', [
-    state('void', style({ opacity: 0, height: 0 })),
+    state('void', style({ opacity: 0, transition: 'translateX(-100%)' })),
 
     transition(':enter, :leave', [
         animate(500)

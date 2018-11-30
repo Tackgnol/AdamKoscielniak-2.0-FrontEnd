@@ -9,6 +9,7 @@ import IEducation from '../models/interface/IEductation';
 
 import ISkillGroup from 'src/models/interface/ISkillGroup';
 import SkillGroup from 'src/models/SkillGroup';
+import Skill from '../models/submodels/Skill';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,19 @@ export class SkillService extends BaseService {
     );
   }
 
-  getSkillGroups(query: { from?: string; to?: string; skills?: Array<string> }) {
+  getSkillList() {
+    return this.getMany<string>(null).pipe(map(r => r));
+  }
+
+  getSkillsForSkillGroup(id: number) {
+    return this.getMany<Skill>(null).pipe(map(r => r));
+  }
+
+  getSkillGroups(query: {
+    from?: string;
+    to?: string;
+    skills?: Array<string>;
+  }) {
     return this.getMany<SkillGroup>(query).pipe(map(r => r));
   }
 
@@ -47,6 +60,7 @@ export class SkillService extends BaseService {
       map(r => r),
       catchError(e => {
         throw e.error.Errors;
-      }));
+      })
+    );
   }
 }
