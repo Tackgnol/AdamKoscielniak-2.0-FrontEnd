@@ -88,7 +88,7 @@ export class ThemeSelectorComponent implements OnInit {
         variables[elem.name] = elem.value;
       }
     }
-    cssVars({variables:variables});
+    cssVars({variables: variables});
   }
 
   OnInit() {

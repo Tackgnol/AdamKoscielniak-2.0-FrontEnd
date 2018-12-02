@@ -28,7 +28,7 @@ export class SkillService extends BaseService {
   }
 
   getSkillList() {
-    return this.getMany<string>(null).pipe(map(r => r));
+    return this.getMany<string>(null, 'list').pipe(map(r => r));
   }
 
   getSkillsForSkillGroup(id: number) {

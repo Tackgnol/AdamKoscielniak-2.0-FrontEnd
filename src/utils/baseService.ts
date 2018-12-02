@@ -34,15 +34,17 @@ export class BaseService {
     );
   }
 
-  getMany<T>(queryParametrs) {
+  getMany<T>(queryParametrs, param: string = null) {
+    const paramQuery = param ? `/${param}` : ''
     return this.http
-      .get<ServerResponse<[T]>>(this.url, { params: queryParametrs })
+      .get<ServerResponse<[T]>>(this.url + paramQuery, { params: queryParametrs })
       .pipe(
         map(data => {
           return new ServerResponse<[T]>(data);
         })
       );
   }
+
 
   post<T>(body: object, addUrl: string = '') {
     return this.http
