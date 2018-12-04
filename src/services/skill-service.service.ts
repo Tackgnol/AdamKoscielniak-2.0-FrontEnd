@@ -28,11 +28,12 @@ export class SkillService extends BaseService {
   }
 
   getSkillList() {
-    return this.getMany<string>(null, 'list').pipe(map(r => r));
+    return this.getMany<{id: number, name: string}>(null, 'list').pipe(map(r => r));
   }
 
-  getSkillsForSkillGroup(id: number) {
-    return this.getMany<Skill>(null).pipe(map(r => r));
+  getSkillsForSkillGroup(idList: Array<number>) {
+    const param = idList.join(',')
+    return this.getMany<string>(null, `${param}/list`).pipe(map(r => r));
   }
 
   getSkillGroups(query: {

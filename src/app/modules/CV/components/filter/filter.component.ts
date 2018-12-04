@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { findIndex, pullAt } from 'lodash';
 import {SkillService} from '../../../../../services/skill-service.service';
+import {filter} from 'lodash';
 
 @Component({
   selector: 'app-filter',
@@ -28,7 +29,27 @@ export class FilterComponent implements OnInit {
     const rangeFormatted = [`${newRange[0]}-01-01`, `${newRange[1]}-12-31`];
     this.filters.setNewRange(rangeFormatted);
   }
+  filterSkills = () => {
+    const selectedSkillGroups = this.selectedOptions();
+    const idList = [];
+    for (const group of selectedSkillGroups) {
+      idList.push(group.id);
+    }
+    this.skillService.getSkillsForSkillGroup(idList).subscribe(
+      r => {
+        this.skills = r.Value;
+      }
+    );
+  }
 
+  filterClick = () => {
+    this.filterDates();
+    this.filterSkills();
+  }
+
+  selectedOptions = () => {
+    return filter(this.skillGroups, s => s.checked);
+  }
   ngOnInit() {
     this.filters.skillFilters.subscribe(
       r => {
@@ -37,8 +58,10 @@ export class FilterComponent implements OnInit {
     );
     this.skillService.getSkillList().subscribe(
       r => {
-        console.log(r);
-        this.skillGroups = r.Value;
+        for (const skillGroup of r.Value) {
+          this.skillGroups.push({id: skillGroup.id, name: skillGroup.name, checked: false});
+        }
+
       }
     );
   }

@@ -10,13 +10,13 @@
       </div>
       <div class="row" *ngFor="let skill of skillGroups">
 
-        <label class="filter__checkbox">{{skill}}
-          <input type="checkbox"/>
+        <label class="filter__checkbox">{{skill.name}}
+          <input type="checkbox" name="skillGroup" [(ngModel)]="skill.checked"/>
           <span class="checkmark"></span>
         </label>
 
       </div>
-      <button class="filter__button" (click)="filterDates()">Filter</button>
+      <button class="filter__button" (click)="filterClick()">Filter</button>
       <h2 *ngIf="skills.length > 0">Selected skills</h2>
       <div class="row">
         <a *ngFor="let skill of skills">
