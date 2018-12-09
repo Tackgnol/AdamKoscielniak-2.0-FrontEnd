@@ -24,6 +24,16 @@ export class FilterComponent implements OnInit {
     this.filters.removeSkillFromFilter(skill);
   }
 
+  resetFilter = () => {
+    this.skills = [];
+    this.filters.setMultiFilter([]);
+    this.dateRange = [2011, 2019];
+    this.filterDates();
+    for (const skill of this.skillGroups) {
+      skill.checked = false;
+    }
+  }
+
   filterDates = () => {
     const newRange = this.dateRange;
     const rangeFormatted = [`${newRange[0]}-01-01`, `${newRange[1]}-12-31`];
@@ -38,6 +48,7 @@ export class FilterComponent implements OnInit {
     this.skillService.getSkillsForSkillGroup(idList).subscribe(
       r => {
         this.skills = r.Value;
+        this.filters.setMultiFilter(this.skills);
       }
     );
   }

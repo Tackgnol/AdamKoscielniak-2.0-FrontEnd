@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import {includes} from 'lodash';
+import {includes, isEmpty} from 'lodash';
+
 
 
 @Injectable({
@@ -23,6 +24,14 @@ export class FilterService {
     this.skillFilters.next(this.skills);
     return this.skillFilters;
 
+  }
+
+  setMultiFilter = (skills: Array<string>) => {
+    if (isEmpty(skills)) {
+      skills = [];
+    }
+    this.skills = skills;
+    this.skillFilters.next(this.skills);
   }
 
   setNewRange = (newRange: Array<string>) => {

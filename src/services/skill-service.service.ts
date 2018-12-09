@@ -1,5 +1,6 @@
 import { ServerResponse } from '../utils/ServerResponse';
 import { map, catchError, tap } from 'rxjs/operators';
+import  {isEmpty} from 'lodash';
 import { BaseService } from '../utils/baseService';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -32,7 +33,7 @@ export class SkillService extends BaseService {
   }
 
   getSkillsForSkillGroup(idList: Array<number>) {
-    const param = idList.join(',')
+    const param = isEmpty(idList) ? 0 : idList.join(',')
     return this.getMany<string>(null, `${param}/list`).pipe(map(r => r));
   }
 

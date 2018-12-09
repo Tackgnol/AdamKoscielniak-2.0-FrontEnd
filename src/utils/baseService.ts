@@ -1,4 +1,4 @@
-import { isNil } from 'lodash';
+import { isNil, forIn, isEmpty } from 'lodash';
 
 import { Injectable } from '@angular/core';
 import {
@@ -9,7 +9,6 @@ import {
 import { Observable, throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ServerResponse } from './ServerResponse';
-
 import { IHeader } from '../models/interface/IHeader';
 
 export class BaseService {
@@ -24,7 +23,7 @@ export class BaseService {
       headers.append(header.key, header.value);
     }
     return headers;
-  };
+  }
 
   getOne<T>(id): Observable<ServerResponse<T>> {
     return this.http.get<ServerResponse<T>>(this.url + String(id)).pipe(
@@ -35,9 +34,20 @@ export class BaseService {
   }
 
   getMany<T>(queryParametrs, param: string = null) {
-    const paramQuery = param ? `/${param}` : ''
+    const paramQuery = param ? `/${param}` : '';
+    const parsedParameters = {};
+    forIn(queryParametrs, (value, key) => {
+      console.log(key, value);
+      if (!isNil(value) && !isEmpty(value)) {
+        if (typeof value === 'object') {
+          parsedParameters[key] = value.join(',');
+        } else {
+          parsedParameters[key] = value;
+        }
+      }
+    });
     return this.http
-      .get<ServerResponse<[T]>>(this.url + paramQuery, { params: queryParametrs })
+      .get<ServerResponse<[T]>>(this.url + paramQuery, { params: parsedParameters })
       .pipe(
         map(data => {
           return new ServerResponse<[T]>(data);
