@@ -15,7 +15,7 @@ export class BaseService {
   constructor(private url: string, private http: HttpClient) {
     this.url = this.baseUrl + url;
   }
-  baseUrl = 'http://127.0.0.1:5000';
+  baseUrl = 'https://adamkoscielniak.eu.org';
   generateHeaders = (input: Array<IHeader>): Headers => {
     const headers = new Headers();
 
