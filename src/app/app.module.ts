@@ -1,5 +1,11 @@
+import { SocialService } from 'src/services/social.service';
+import { AuthGuard } from './../utils/AuthGuard';
+import { ExperienceProjectsComponent } from './modules/CV/components/Experience/components/experience-projects/experience-projects.component';
+import { SkillService } from 'src/services/skill-service.service';
+import { EducationService } from 'src/services/education-service.service';
+import { SingleEducationAdminComponent } from './modules/Admin/education-admin/components/single-education/single-education.component';
 import { FilterService } from './../services/filter.service';
-
+import { NouisliderModule } from 'ng2-nouislider';
 import { AuthService } from './../services/auth-service.service';
 import { AuthInterceptor } from './../utils/AuthInterceptor';
 import { SpinnerComponent } from './../utils/components/Spinner';
@@ -14,18 +20,14 @@ import { FormsModule } from '@angular/forms';
 
 import { ToastrModule } from 'ngx-toastr';
 
-import { QuillModule } from 'ngx-quill'
-
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { QuillModule } from 'ngx-quill';
 
 import { AppComponent } from './app.component';
-
-
-
+import { DragScrollModule } from 'ngx-drag-scroll';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ExperienceComponent } from './modules/CV/components/Experience/experience.component';
 import { LoginFormComponent } from './modules/Login/components/login-form/login-form.component';
-import { CommonModule } from '../../node_modules/@angular/common';
+import { CommonModule, DatePipe } from '../../node_modules/@angular/common';
 import { Routes, RouterModule } from '../../node_modules/@angular/router';
 import { CVMainComponent } from './modules/CV/cv.component';
 import { ExperienceResponsibilitiesComponent } from './modules/CV/components/Experience/components/experience-responsibilities/experience-responsibilities.component';
@@ -38,22 +40,59 @@ import { MainAdminComponent } from './modules/Admin/main-admin/main-admin.compon
 import { SingleExperienceComponent } from './modules/Admin/experience-admin/components/single-experience/single-experience.component';
 import { NewExperienceComponent } from './modules/Admin/experience-admin/components/new-experience/new-experience.component';
 import { ConfirmationModalComponent } from '../utils/components/confirmation-modal/confirmation-modal.component';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, BsDropdownModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ExperienceFormComponent } from './modules/Admin/experience-admin/components/experience-form/experience-form.component';
-import { FilterComponent } from './modules/CV/components/filter/filter.component';
-import { ExperienceProjectsComponent } from './modules/CV/components/Experience/components/experience-projects/experience-projects.component';
+import { ProjectsComponent } from './modules/CV/components/Projects/projects.component';
 import { ExperienceSingleExperienceComponent } from 'src/app/modules/CV/components/Experience/components/single-experience/experience-single-experience.component';
+import { SingleEducationComponent } from './modules/CV/components/Education/components/single-education/single-education.component';
+import { EducationComponent } from './modules/CV/components/Education/education.component';
+import { SkillsComponent } from './modules/CV/components/Skills/skills.component';
+import { EducationFormComponent } from './modules/Admin/education-admin/components/education-form/education-form.component';
+import { NewEducationComponent } from './modules/Admin/education-admin/components/new-education/new-education.component';
+import { EducationAdminComponent } from './modules/Admin/education-admin/education-admin.component';
+import { SkillGroupComponent } from './modules/CV/components/Skills/components/skill-group/skill-group.component';
+import { SingleSkillComponent } from './modules/CV/components/Skills/components/single-skill/single-skill.component';
+import { SkillAdminComponent } from './modules/Admin/skill-admin/skill-admin.component';
+import { SkillFormComponent } from './modules/Admin/skill-admin/components/skill-form/skill-form.component';
+import { NewSkillComponent } from './modules/Admin/skill-admin/components/new-skill/new-skill.component';
+import { SingleSkillAdminComponent } from './modules/Admin/skill-admin/components/single-skill/single-skill.component';
+import { HobbiesComponent } from './modules/CV/components/Hobbies/hobbies.component';
+import { HobbyComponent } from './modules/CV/components/Hobbies/components/hobby/hobby.component';
+import { HobbyAdminComponent } from './modules/Admin/hobby-admin/hobby-admin.component';
+import { NewHobbyComponent } from './modules/Admin/hobby-admin/components/new-hobby/new-hobby.component';
+import { HobbyFormComponent } from './modules/Admin/hobby-admin/components/hobby-form/hobby-form.component';
+import { SingleHobbyComponent } from './modules/Admin/hobby-admin/components/single-hobby/single-hobby.component';
+import { MainComponent } from './modules/Main/main.component';
+import { MenuComponent } from './modules/Menu/menu.component';
+import { BackdropComponent } from './modules/Main/components/backdrop/backdrop.component';
+import { HelloComponent } from './modules/Main/components/hello/hello.component';
+import { MoreComponent } from './modules/Main/components/more/more.component';
+import { ExperienceCoreComponent } from './modules/CV/components/Experience/components/single-experience/experience-core/experience-core.component';
+import { SummaryComponent } from './modules/Main/components/summary/summary.component';
+import { SummaryElementComponent } from './modules/Main/components/summary/components/summary-element/summary-element.component';
+import { CVFooterComponent } from './modules/CV/components/cvfooter/cvfooter.component';
+import { DownloadCvComponent } from './components/download-cv/download-cv.component';
+import { ThemeSelectorComponent } from './modules/theme-selector/theme-selector.component';
+import { FilterComponent } from './modules/CV/components/filter/filter.component';
+import { FooterComponent } from './modules/Footer/footer.component';
+import { AboutComponent } from './modules/Footer/components/about/about.component';
+import { SocialComponent } from './modules/Footer/components/social/social.component';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
-  { path: 'CV', component: CVMainComponent },
+  { path: '', component: CVMainComponent },
   {
     path: 'Admin',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: MainAdminComponent },
-      { path: 'Experience', component: ExperienceAdminComponent }
+      { path: 'Experience', component: ExperienceAdminComponent },
+      { path: 'Education', component: EducationAdminComponent },
+      { path: 'Skill', component: SkillAdminComponent },
+      { path: 'Hobby', component: HobbyAdminComponent }
     ]
   }
 ];
@@ -77,38 +116,82 @@ const appRoutes: Routes = [
     NewExperienceComponent,
     ConfirmationModalComponent,
     ExperienceFormComponent,
+    ProjectsComponent,
+    SingleEducationComponent,
+    SingleEducationAdminComponent,
+    EducationComponent,
+    SkillsComponent,
+    EducationFormComponent,
+    NewEducationComponent,
+    EducationAdminComponent,
+    SkillGroupComponent,
+    SingleSkillComponent,
+    SkillAdminComponent,
+    SkillFormComponent,
+    NewSkillComponent,
+    SingleSkillAdminComponent,
+    HobbiesComponent,
+    HobbyComponent,
+    HobbyAdminComponent,
+    NewHobbyComponent,
+    HobbyFormComponent,
+    SingleHobbyComponent,
+    MainComponent,
+    MenuComponent,
+    BackdropComponent,
+    HelloComponent,
+    MoreComponent,
+    ExperienceCoreComponent,
+    ExperienceProjectsComponent,
+    SummaryComponent,
+    SummaryElementComponent,
+    CVFooterComponent,
+    DownloadCvComponent,
+    ThemeSelectorComponent,
     FilterComponent,
-    ExperienceProjectsComponent
+    FooterComponent,
+    AboutComponent,
+    SocialComponent
   ],
   imports: [
     ToastrModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled'
+    }),
     LaddaModule.forRoot({
       style: 'expand-left',
       spinnerSize: 40,
       spinnerColor: 'white',
       spinnerLines: 12
     }),
+    DragScrollModule,
     ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     QuillModule,
-    FlexLayoutModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    NouisliderModule
   ],
   entryComponents: [ConfirmationModalComponent],
   providers: [
     AuthService,
+    AuthGuard,
     ExperienceService,
+    EducationService,
+    SkillService,
+    SocialService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
     },
-    FilterService
+    FilterService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

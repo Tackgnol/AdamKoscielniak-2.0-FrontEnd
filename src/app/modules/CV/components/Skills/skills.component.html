@@ -1,0 +1,15 @@
+<section id="skills-section" class="skills__backgound">
+  <div class="container">
+    <h2 class="section-title section__heading">My Skills</h2>
+    <div *ngIf="loading">
+      <spinner></spinner>
+    </div>
+    <div class="skills__timeline">
+      <div class="row">
+        <div class="col-md-6 col-sm-12" *ngFor="let skillGroup of skills">
+          <app-skill-group [skillGroup]="skillGroup"></app-skill-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

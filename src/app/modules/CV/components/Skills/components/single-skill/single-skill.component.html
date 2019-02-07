@@ -1,0 +1,6 @@
+<div class="skill__header__name col-10">{{skill.Name}}</div>
+<div class="skill__header__proficiency col-2 text-right">{{skill.Proficiency|percent}}</div>
+
+<div class="skill__progress__gray">
+  <div class="skill__progress__black" [ngStyle]="{'width':skill.Proficiency| percent}"></div>
+</div>

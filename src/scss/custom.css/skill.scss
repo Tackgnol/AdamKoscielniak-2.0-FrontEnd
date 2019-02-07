@@ -1,0 +1,59 @@
+.skills__backgound {
+  background: var(--background-light-color);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.skills__timeline {
+  margin-left: 75px;
+}
+
+@media (max-width: 767px) {
+  .skills__timeline {
+    margin-left: 30px;
+  }
+}
+
+.skill__group__name {
+  color: var(--text-light-color);
+  font-family: $font-family;
+  font-size: $font-size-small;
+  font-weight: $font-weight-bold;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+
+.skill__container {
+  margin: 15px 45px 15px 0px;
+}
+
+.skill__progress__black {
+  background-color: var(--background-strong-color);
+  height: 4px;
+}
+
+.skill__progress__gray {
+  background-color: var(--background-medium-color);
+  height: 4px;
+  width: 100%;
+}
+
+.skill__header__name {
+  font-size: $font-size-extra-small;
+  font-weight: $font-weight-bold;
+  font-family: $font-family;
+  color: var(--text-light-color);
+  line-height: 36px;
+  padding-left: 0px !important;
+
+}
+
+.skill__header__proficiency {
+  font-size: $font-size-extra-small;
+  font-weight: $font-weight-regular;
+  font-family: $font-family;
+  color: var(--text-light-color);
+  line-height: 36px;
+  padding-right: 0px !important;
+
+}

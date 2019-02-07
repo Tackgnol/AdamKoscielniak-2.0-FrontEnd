@@ -1,0 +1,14 @@
+<div class="container">
+  <h3 class="section-title">Hobbies</h3>
+  <h1>Add new hobby</h1>
+  <div class="card-body">
+    <app-hobby-form [newHobby]="true"></app-hobby-form>
+  </div>
+  <h1>Edit hobbies</h1>
+  <div *ngIf="loading">
+    <spinner></spinner>
+  </div>
+  <div *ngFor="let hobby of hobbies">
+    <app-single-hobby [hobby]="hobby"></app-single-hobby>
+  </div>
+</div>

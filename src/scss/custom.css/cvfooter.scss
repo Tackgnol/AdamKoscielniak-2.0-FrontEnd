@@ -1,0 +1,11 @@
+.cvfooter__section {
+  height: 370px;
+  background-image: var(--footer-image);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

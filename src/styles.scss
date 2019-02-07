@@ -1,9 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import './scss/custom.css/main.scss';
 @import '~ngx-toastr/toastr.css';
-@import '~animate.css/animate.min.css';
+@import "~nouislider/distribute/nouislider.min.css";
+@import './scss/theme/responsive.scss';
 @import './scss/theme-1.scss';
 @import './scss/theme/base.scss';
 @import './scss/theme/mixins.scss';
-@import './scss/theme/responsive.scss';
 @import './scss/custom.css/experience.scss';
-@import './scss/custom.css/main.scss';
+@import './scss/custom.css/education.scss';
+@import './scss/custom.css/skill.scss';
+@import './scss/custom.css/hobby.scss';
+@import './scss/custom.css/menu.scss';
+@import './scss//custom.css/backdrop.scss';
+@import './scss/custom.css/hello.scss';
+@import './scss/custom.css/more.scss';
+@import './scss/custom.css/summary.scss';
+@import './scss/custom.css/cvfooter.scss';
+@import './scss//custom.css/theme-selector';
+@import './scss/custom.css/terminal.scss';
+@import './scss/custom.css/filter.scss';
+@import './scss/custom.css/footer.scss';

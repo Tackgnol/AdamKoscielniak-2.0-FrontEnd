@@ -1,0 +1,70 @@
+.flex-container {
+  background-color: var(--background-strong-color);
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row {
+  width: auto;
+}
+
+.flex-item {
+  padding: 5px;
+  width: auto;
+  height: auto;
+  margin: 10px;
+  line-height: 20px;
+  color: var(--text-strong-color);
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  display: block;
+  box-sizing: content-box;
+}
+
+.hello__text__small {
+  color: var(--text-strong-color);
+  font-family: $font-family;
+  font-size: $font-size-small;
+  font-weight: $font-weight-ultra-light;
+  padding-bottom: 30px;
+}
+
+.hello__text__large {
+  color: var(--text-strong-color);
+  font-family: $font-family;
+  font-size: $font-size-very-large;
+  font-weight: $font-weight-bold;
+  padding-bottom: 30px;
+}
+
+@media (max-width: 767px) {
+  .hello__text__large {
+    color: var(--text-strong-color);
+    font-family: $font-family;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    padding-bottom: 30px;
+  }
+
+}
+
+.hello__CV__button {
+  margin: auto auto;
+  margin-top: 30px;
+  width: 200px;
+  color: var(--text-strong-color);
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  border: $bold-border;
+  border-radius: $border-radius-large;
+  padding: 5px 5px;
+}

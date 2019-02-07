@@ -17,22 +17,29 @@ export class ExperienceComponent implements OnInit {
   ) {
     this.filters.skillFilters.subscribe(
       r => {
-        console.log(r);
+        console.log('reload skills!');
         this.skills = r;
         this.loadData();
       }
     );
+    this.filters.dateRange.subscribe(
+      r => {
+        this.dateRange = r;
+        this.loadData();
+      }
+    );
+
   }
 
   experiences = Array<Experience>();
   skills = Array<string>();
+  dateRange = ['2001-01-01', `${new Date().getFullYear()}-12-31`];
   loading: boolean;
 
 
   loadData = () => {
     this.loading = true;
-    console.log(this.skills);
-    const experienceRequest = this.expService.getExperiences({ skills: this.skills });
+    const experienceRequest = this.expService.getExperiences({from: this.dateRange[0], to: this.dateRange[1], skills: this.skills });
     experienceRequest.subscribe(
       data => {
         this.experiences = data.Value;

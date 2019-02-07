@@ -1,0 +1,109 @@
+<form #educationForm="ngForm">
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label for="School">School</label>
+        <input type="text" class="form-control" id="School" required [(ngModel)]="model.School" name="School" #School="ngModel" />
+        <div [hidden]="School.valid || School.pristine" class="alert alert-danger">School is required</div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label for="Faculty">Faculty</label>
+        <input type="text" class="form-control" id="Faculty" required [(ngModel)]="model.Faculty" name="Faculty"
+          #Faculty="ngModel" />
+        <div [hidden]="Faculty.valid || Faculty.pristine" class="alert alert-danger">Faculty is required</div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label for="Course">Course</label>
+        <input type="text" class="form-control" id="Course" required [(ngModel)]="model.Course" name="Course" #Course="ngModel" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1">
+      <label for="Level">Level</label>
+      <div class="input-group mb-3">
+        <div class="btn-group" dropdown>
+          <button id="Level" dropdownToggle type="button" class="btn dropdown-toggle form-control" aria-controls="dropdown-basic">
+            {{model.Level}} <span class="caret"></span>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+            <li role="menuitem" *ngFor="let role of roles"><a class="dropdown-item" (click)="setRole(role)">{{role}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="form-group">
+        <label for="Thesis">Thesis</label>
+        <input type="text" class="form-control" id="Thesis" [(ngModel)]="model.Thesis" name="Thesis" #Thesis="ngModel" />
+      </div>
+    </div>
+    <div class="col-1">
+      <label for="Grade">Grade</label>
+      <div class="input-group mb-3">
+        <div class="btn-group" dropdown>
+          <button id="LeGradevel" dropdownToggle type="button" class="btn dropdown-toggle form-control" aria-controls="dropdown-basic">
+            {{model.GradeEu}} <span class="caret"></span>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+            <li role="menuitem" *ngFor="let grade of grades"><a class="dropdown-item" (click)="setGrade(grade)">{{grade}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <label for="employer">BeginDate</label>
+        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker id="getBeginDate" required
+          [(ngModel)]="model.getBeginDate" name="getBeginDate" #getBeginDate="ngModel" />
+        <div [hidden]="getBeginDate.valid || getBeginDate.pristine" class="alert alert-danger">BeginDate is required</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <label for="employer">EndDate</label>
+        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker id="getEndDate" required
+          [(ngModel)]="model.getEndDate" name="getEndDate" #getEndDate="ngModel" />
+        <div [hidden]="getEndDate.valid || getEndDate.pristine" class="alert alert-danger">BeginDate is required</div>
+      </div>
+    </div>
+  </div>
+  <h2>Projects</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <button (click)="newProject()" class="btn d-md-inline-block">New project</button>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let project of model.Projects; index as i; trackBy: trackByFn">
+    <div class="col-md-12 col-xs-12">
+      <div class="form-group">
+        <label for="Project-Title-{{i}}">Project Title</label>
+        <input type="text" class="form-control" id="Project-Title-{{i}}" required [(ngModel)]="model.Projects[i].Title"
+          name="Project-Title-{{i}}" #Project="ngModel" />
+        <label for="Project-Description-{{i}}">Project Description</label>
+        <quill-editor #editor [(ngModel)]="model.Projects[i].Description" name="Project-Description-{{i}}" id="Project-Description-{{i}}"></quill-editor>
+        <label for="Project-Result-{{i}}">Project Result</label>
+        <quill-editor #editor [(ngModel)]="model.Projects[i].Result" name="Project-Result-{{i}}" id="Project-Result-{{i}}"></quill-editor>
+        <label for="Project-Title-{{i}}">Portfolio Link</label>
+        <input type="text" class="form-control" id="Project-PortfolioLink-{{i}}" required [(ngModel)]="model.Projects[i].PortfolioLink"
+          name="Project-PortfolioLink-{{i}}" #Project="ngModel" />
+      </div>
+      <hr />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <div class="form-group">
+        <button (click)="onSubmit()" type="submit" class="btn d-md-inline-block float-right" [disabled]="!educationForm.form.valid">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>

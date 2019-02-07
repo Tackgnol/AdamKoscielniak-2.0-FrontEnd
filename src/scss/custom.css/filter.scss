@@ -1,0 +1,142 @@
+.filter {
+  z-index: 8000;
+  position: fixed;
+  width: 400px;
+  top: 200px;
+  right: -320px;
+  transition: all 300ms ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.no__ui__slider {
+  width: 80%;
+}
+
+.noUi-connect {
+  background: var(--background-strong-color);
+}
+
+.noUi-handle {
+  border-radius: 8px;
+  background: var(--background-light-color);
+  cursor: pointer;
+  outline: none;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 20px;
+  height: 20px;
+  left: -5px;
+  top: -2px;
+}
+
+.noUi-handle:after,
+.noUi-handle:before {
+  display: none;
+}
+
+html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
+  right: -5px;
+  left: auto;
+}
+
+.filter:hover {
+  right: 15px;
+  text-transform: none;
+  text-decoration: none;
+  background: var(--background-medium-color);
+}
+
+.filter__button {
+  margin: auto auto;
+  margin-top: 30px;
+  width: 100px;
+  color: var(--text-strong-color);
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  border: 5px solid #ffffff;
+  border-radius: 25px;
+  padding: 5px 5px;
+  background: var(--background-strong-color);
+}
+
+.filter-item {
+  width: 200px;
+  border-top-right-radius: 90px;
+  border-bottom-right-radius: 90px;
+  border: 1px solid white;
+  padding: 8px 8px 2px 8px;
+}
+
+.filter--icon {
+  color: var(--text-medium-color-accent);
+  text-align: center;
+  font-size: 40px;
+  padding: 10px;
+}
+
+.filter__header {
+  color: var(--text-medium-color);
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  font-weight: $font-weight-bold;
+  line-height: 24px;
+}
+
+.filter__checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.filter__checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: var(--background-light-color);
+  color: var(--text-light-color);
+}
+
+.filter__checkbox input:checked ~ .checkmark {
+  background-color: var(--background-strong-color);
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.filter__checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.filter__checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

@@ -1,0 +1,53 @@
+<div id="about" class="container more__background">
+  <div class="row align-content-center">
+    <h1 class="more__text__header">
+      About me
+    </h1>
+  </div>
+  <div class="row">
+    <img src="assets/Adam.png" class="more__picture" alt="Adam Kościelniak" />
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-sm-12 offset-md-2">
+      <h2 class="more__text__details">
+        Full-stack developer, Experience with C# ASP.NET, Flask, and Django on the backend. React, Angular 4+ and
+        Knockout on the frontend. I also code in VBA for Excel, Access and PowerPoint,
+        I can train your employees, or do a project for you.
+      </h2>
+      <h2 class="more__text__details pt-3">
+        Hope you enjoyed your visit here!
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <img src="assets/Signature.png" alt="Adam Kościelniak signature" class="more__picture" />
+  </div>
+  <div class="row">
+    <h1 class="more__text__work-header">
+      My current work
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <h1 class="more__text__details-header">
+        Job
+      </h1>
+      <div *ngIf="loading">
+        <spinner></spinner>
+      </div>
+      <app-experience-core *ngIf="!loading" class="experience__body mt-3" [dateFrom]="experience.BeginDate" [dateTo]="experience.EndDate"
+        [currentEmployer]="experience.CurrentEmployer" [Employer]="experience.Employer" [Position]="experience.Position"
+        [Responsibilities]="experience.Responsibilities" [Skills]="experience.Skills"></app-experience-core>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h1 class="more__text__details-header">
+        Personal Projects
+      </h1>
+      <div class="more__promoted-project mt-3">
+        <app-projects [title]="'adamkoscielniak.pl 2.0'" [role]="'Developer'" [descrtiption]="'Reacreating my home page to be more asteaticly pleasing, and with better functionalities'"
+          [result]="'In progress'" [alwaysShow]="true"></app-projects>
+      </div>
+    </div>
+  </div>
+</div>
+<app-summary></app-summary>

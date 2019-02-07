@@ -1,0 +1,22 @@
+<div class="card mt-1" [class.removed]="removed">
+  <div class="card-header">
+
+    <span class="text-left float-left cut-title">{{education.School}} - {{education.Course}} ({{education.Level}})</span>
+
+    <span class="float-right">
+      <button (click)="toggle()" class="btn" aria-expanded="true" aria-controls="collapseOne">
+        <i class="fas fa-edit"></i>
+      </button>
+      <button (click)="openModalWithComponent()" class="btn" aria-expanded="true" aria-controls="collapseOne">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </span>
+  </div>
+
+  <div class="collapse" [class.show]="show" aria-labelledby="headingOne">
+    <div class="card-body">
+      <app-education-form [education]="education">
+      </app-education-form>
+    </div>
+  </div>
+</div>

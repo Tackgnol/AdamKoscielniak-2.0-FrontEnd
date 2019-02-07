@@ -1,4 +1,42 @@
-<a *ngFor="let skill of skills">
-  <span style="cursor: pointer" class="badge badge-secondary m-1" (click)="removeElement(skill)"><i class="fa fa-times"></i>
-    {{skill}}</span>
-</a>
+<div class="filter">
+  <div class="row">
+    <div class="col-3"><i class="fas fa-filter filter--icon"></i></div>
+    <div class="col-9 pl-3">
+      <div class="row">
+        <nouislider
+          class="no__ui__slider pl-3"
+          [tooltips]="[true, true]"
+          [connect]="true"
+          [min]="2005"
+          [max]="2019"
+          [(ngModel)]="dateRange"
+          [step]="1"
+        ></nouislider>
+      </div>
+      <div class="row" *ngFor="let skill of skillGroups">
+        <label class="filter__checkbox"
+          >{{ skill.name }}
+          <input
+            type="checkbox"
+            name="skillGroup"
+            [(ngModel)]="skill.checked"
+          />
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <button class="filter__button" (click)="filterClick()">Filter</button
+      ><button class="filter__button" (click)="resetFilter()">Reset</button>
+      <h2 *ngIf="skills.length > 0">Selected skills</h2>
+      <div class="row pl-3">
+        <a *ngFor="let skill of skills">
+          <span
+            style="cursor: pointer"
+            class="badge badge-secondary m-1"
+            (click)="removeElement(skill)"
+            ><i class="fa fa-times"></i> {{ skill }}
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

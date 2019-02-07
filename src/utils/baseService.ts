@@ -1,17 +1,21 @@
-import { isNil } from 'lodash';
+import { isNil, forIn, isEmpty } from 'lodash';
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams
+} from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ServerResponse } from './ServerResponse';
-
 import { IHeader } from '../models/interface/IHeader';
 
-
 export class BaseService {
-  constructor(private url: string, private http: HttpClient) { }
-
+  constructor(private url: string, private http: HttpClient) {
+    this.url = this.baseUrl + url;
+  }
+  baseUrl = 'https://adamkoscielniak.eu.org';
   generateHeaders = (input: Array<IHeader>): Headers => {
     const headers = new Headers();
 
@@ -29,24 +33,40 @@ export class BaseService {
     );
   }
 
-  getMany<T>(queryParametrs) {
-
-    return this.http.get<ServerResponse<[T]>>(this.url, { params: queryParametrs }).pipe(
-      map(data => {
-        return new ServerResponse<[T]>(data);
-      })
-    );
+  getMany<T>(queryParametrs, param: string = null) {
+    const paramQuery = param ? `/${param}` : '';
+    const parsedParameters = {};
+    forIn(queryParametrs, (value, key) => {
+      console.log(key, value);
+      if (!isNil(value) && !isEmpty(value)) {
+        if (typeof value === 'object') {
+          parsedParameters[key] = value.join(',');
+        } else {
+          parsedParameters[key] = value;
+        }
+      }
+    });
+    return this.http
+      .get<ServerResponse<[T]>>(this.url + paramQuery, { params: parsedParameters })
+      .pipe(
+        map(data => {
+          return new ServerResponse<[T]>(data);
+        })
+      );
   }
 
+
   post<T>(body: object, addUrl: string = '') {
-    return this.http.post<ServerResponse<T>>(this.url + '/' + addUrl, body).pipe(
-      map(data => {
-        return data;
-      }),
-      catchError(e => {
-        throw e;
-      })
-    );
+    return this.http
+      .post<ServerResponse<T>>(this.url + '/' + addUrl, body)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(e => {
+          throw e;
+        })
+      );
   }
 
   put<T>(body: object, addUrl: string = '') {

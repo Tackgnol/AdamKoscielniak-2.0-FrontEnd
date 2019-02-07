@@ -1,0 +1,32 @@
+<form #hobbyForm="ngForm">
+
+  <div class="row">
+    <div class="col-6 col-sm-12">
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" [(ngModel)]="model.Name" name="Name" #Name="ngModel" required />
+      </div>
+    </div>
+    <div class="col-6 col-sm-12">
+      <div class="form-group">
+        <label for="FAIcon">FAIcon</label>
+        <input type="text" class="form-control" id="FAIcon" [(ngModel)]="model.FAIcon" name="FAIcon" #FAIcon="ngModel"
+          required />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <textarea style="width: 100%" #editor [(ngModel)]="model.Description" name="Description" id="Description"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-5">
+    <div class="col-md-12 col-xs-12">
+      <div class="form-group">
+        <button (click)="onSubmit()" type="submit" class="btn d-md-inline-block float-right" [disabled]="!hobbyForm.form.valid">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>

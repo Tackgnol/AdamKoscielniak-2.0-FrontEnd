@@ -7,6 +7,7 @@ import IExperience from 'src/models/interface/IExprience';
 import { ToastrService } from 'ngx-toastr';
 import Project from '../../../../../../models/submodels/Project';
 import { ErrorsToList } from 'src/utils/ErrorsToList';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-experience-form',
@@ -14,7 +15,7 @@ import { ErrorsToList } from 'src/utils/ErrorsToList';
   styleUrls: ['./experience-form.component.css']
 })
 export class ExperienceFormComponent implements OnInit {
-  constructor(private expServ: ExperienceService, private toastr: ToastrService) { }
+  constructor(private expServ: ExperienceService, private toastr: ToastrService, private datePipe: DatePipe) { }
 
   @Input()
   newExperience: boolean;
@@ -78,14 +79,13 @@ export class ExperienceFormComponent implements OnInit {
       CurrentEmployer: isNil(currentState.getEndDate),
       Skills: currentState.Skills,
       CompanyWebsite: currentState.CompanyWebsite,
-      BeginDate: currentState.getBeginDate,
-      EndDate: currentState.getEndDate,
+      BeginDate: this.datePipe.transform(currentState.getBeginDate, 'yyyy-MM-dd'),
+      EndDate: this.datePipe.transform(currentState.getEndDate, 'yyyy-MM-dd'),
       Projects: currentState.Projects,
       Location: currentState.Location
     };
 
     if (this.newExperience) {
-      console.log(toSend);
       this.expServ.newExperience(toSend).subscribe(
         () => this.toastr.info('Changes saved succefully'),
         e => this.toastr.error(e)

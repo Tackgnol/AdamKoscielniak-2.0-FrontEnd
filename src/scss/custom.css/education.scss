@@ -1,0 +1,220 @@
+.education__background {
+  background: var(--background-medium-color);
+  padding-top: 30px;
+}
+
+.education__conent__strong {
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  line-height: 24px;
+  font-size: $font-size-very-small;
+  color: var(--text-medium-color)
+}
+
+.education__conent__regular {
+  font-family: $font-family;
+  font-weight: $font-weight-regular;
+  line-height: 24px;
+  font-size: $font-size-very-small;
+  color: var(--text-medium-color)
+}
+
+.education__header {
+  color: var(--text-medium-color);
+  font-family: $font-family;
+  font-size: $font-size-medium;
+  font-weight: $font-weight-regular;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+
+.education__point:before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 70px;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background: var(--background-medium-color);
+}
+
+
+.education__point:after {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 76px;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background: var(--text-light-color);
+  z-index: 10;
+}
+
+.education__timeline {
+  border-left: 3px solid var(--text-light-color);
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  position: relative;
+  padding: 0 30px;
+}
+
+
+.education__body {
+  border-radius: $border-radius-medium;
+  border: $basic-border;
+  background-color: var(--background-medium-color);
+  margin-bottom: 50px;
+  display: table;
+}
+
+
+.education__projects__button {
+  text-align: center;
+  font-size: $font-size-medium;
+  border: $basic-border;
+  background: var(--background-medium-color);
+  color: var(--text-medium-color-accent);
+  border-radius: $border-radius-large;
+  width: 50px;
+  height: 50px;
+  margin: auto auto;
+  transform-style: preserve-3d;
+}
+
+.education__content {
+  padding: 30px 30px 30px 30px;
+}
+
+.education__text__date {
+  color: var(--text-medium-color-accent);
+  font-family: $font-family;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-extra-small;
+  line-height: 30px;
+}
+
+.education__body__title {
+  color: var(--text-medium-color);
+  font-family: $font-family;
+  font-size: $font-size-small;
+  font-weight: $font-weight-regular;
+  line-height: 30px;
+}
+
+.education__body__position {
+  color: var(--text-medium-color-accent);
+  font-family: $font-family;
+  font-style: italic;
+  font-weight: $font-weight-regular;
+  line-height: 24px;
+}
+
+.education__body__responsibility {
+  font-family: $font-family;
+  font-weight: $font-weight-light;
+  line-height: 24px;
+}
+
+.education__body__skills {
+  background-color: var(--background-medium-color);
+  color: var(--text-medium-color);
+}
+
+.education__projects__body {
+  border-radius: $border-radius-medium;
+  border: $basic-border;
+  background-color: var(--background-medium-color);
+}
+
+.education__projects__contents {
+  overflow: hidden !important;
+}
+
+.education__projects__header {
+  color: var(--text-medium-color);
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  font-weight: $font-weight-light;
+  line-height: 24px;
+}
+
+.education__projects__title {
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  line-height: 36px;
+  font-size: $font-size-small;
+  color: var(--text-medium-color)
+}
+
+.education__projects__position {
+  color: var(--text-medium-color);
+  font-family: $font-family;
+  font-size: $font-size-extra-small;
+  font-style: italic;
+  font-weight: $font-weight-light;
+  line-height: 24px;
+}
+
+.education__projects__point {
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-extra-small;
+  color: var(--text-medium-color);
+}
+
+.center-margins {
+  margin: auto auto
+}
+
+.education__active {
+  background: var(--background-strong-color);
+  color: var(--text-strong-color);
+}
+
+.education__projects__point-details {
+  font-family: $font-family;
+  font-weight: $font-weight-light;
+  font-size: $font-size-extra-small;
+}
+
+.education__body__point {
+  border: $bold-border;
+  background-color: var(--background-medium-color);
+}
+
+@media (max-width: 767px) {
+  .education__body {
+    margin-bottom: 20px;
+  }
+
+  .education__projects__button {
+    margin-bottom: 20px;
+  }
+
+  .education__projects__body {
+    margin-bottom: 20px;
+  }
+}

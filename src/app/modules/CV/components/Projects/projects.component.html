@@ -1,0 +1,9 @@
+<div class="experience__projects__title" (click)="!alwaysShow && toggleProject()">{{title}} <i *ngIf="!alwaysShow"
+    class="fa float-right" [ngClass]="{'fa-chevron-up':show,'fa-chevron-down':!show }" aria-hidden="true"></i></div>
+<div class="experience__projects__contents" @expandH *ngIf="show || alwaysShow">
+  <div class="experience__projects__position">{{role}}</div>
+  <div class="experience__projects__point">Project Description</div>
+  <div class="experience__projects__point-details" [innerHTML]="descrtiption"></div>
+  <div class="experience__projects__point">Result</div>
+  <div class="experience__projects__point-details" [innerHTML]="result"></div>
+</div>

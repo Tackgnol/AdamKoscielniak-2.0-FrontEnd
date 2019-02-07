@@ -1,0 +1,13 @@
+<div class="backdrop">
+  <div *ngIf="showConsole" class="flex-container">
+
+    <div @fade  class="shell-wrap">
+      <p class="shell-top-bar">Website shell</p>
+      <ul class="shell-body" id="console">
+
+      </ul>
+    </div>
+  </div>
+
+  <app-hello *ngIf="!showConsole"></app-hello>
+</div>

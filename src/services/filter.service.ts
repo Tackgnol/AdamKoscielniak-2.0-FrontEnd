@@ -1,22 +1,41 @@
 import { Injectable } from '@angular/core';
-import { from, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import {includes, isEmpty} from 'lodash';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
 
-  constructor() { }
+  constructor() {
+    this.dateRange.next(['2000-01-01', `${new Date().getFullYear()}-12-31`]);
+  }
 
   private skills = [];
   skillFilters = new Subject<Array<string>>();
-  fromDate = '2000-01-01';
-  toDate = `${new Date().getFullYear()}-12-31`;
+  dateRange =  new Subject<Array<string>>();
 
   addSkillToFilter = skill => {
-    this.skills.push(skill);
+    if (!includes(this.skills, skill)) {
+      this.skills.push(skill);
+    }
     this.skillFilters.next(this.skills);
     return this.skillFilters;
+
+  }
+
+  setMultiFilter = (skills: Array<string>) => {
+    if (isEmpty(skills)) {
+      skills = [];
+    }
+    this.skills = skills;
+    this.skillFilters.next(this.skills);
+  }
+
+  setNewRange = (newRange: Array<string>) => {
+    this.dateRange.next(newRange);
   }
 
   removeSkillFromFilter = skill => {
