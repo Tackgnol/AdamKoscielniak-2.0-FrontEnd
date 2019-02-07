@@ -4,8 +4,7 @@
 $border-radius-large: 25px;
 $border-radius-medium: 15px;
 $border-radius-small: 5px;
-$font-family: Montserrat,
-sans-serif;
+$font-family: Montserrat, sans-serif;
 $font-weight-ultra-light: 100;
 $font-weight-light: 300;
 $font-weight-regular: 400;
@@ -13,17 +12,15 @@ $font-weight-bold: 700;
 $font-size-very-large: 72px;
 $font-size-large: 48px;
 $font-size-medium: 30px;
-$font-size-small:24px;
-$font-size-very-small:20px;
-$font-size-extra-small:16px;
+$font-size-small: 24px;
+$font-size-very-small: 20px;
+$font-size-extra-small: 16px;
 $basic-border: 1px solid #cccccc;
 $bold-border: 5px solid #ffffff;
-
 
 .collapsed {
   transform: rotate(90deg);
 }
-
 
 .section__heading {
   color: var(--text-light-color);
@@ -34,4 +31,16 @@ $bold-border: 5px solid #ffffff;
 
 .removed {
   display: none !important;
+}
+
+.link {
+  color: var(--text-strong-color-accent) !important;
+}
+
+.link :visited {
+  color: var(--text-strong-color-accent);
+}
+
+.link :hover {
+  color: var(--text-strong-color-accent);
 }

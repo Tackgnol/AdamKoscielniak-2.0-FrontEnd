@@ -31,11 +31,12 @@
   top: -2px;
 }
 
-.noUi-handle:after, .noUi-handle:before {
+.noUi-handle:after,
+.noUi-handle:before {
   display: none;
 }
 
-html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
+html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
   right: -5px;
   left: auto;
 }
@@ -104,7 +105,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   width: 0;
 }
 
-
 .checkmark {
   position: absolute;
   top: 0;
@@ -115,18 +115,15 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   color: var(--text-light-color);
 }
 
-
-
 .filter__checkbox input:checked ~ .checkmark {
   background-color: var(--background-strong-color);
 }
 
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
-
 
 .filter__checkbox input:checked ~ .checkmark:after {
   display: block;

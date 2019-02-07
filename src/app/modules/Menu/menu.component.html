@@ -21,7 +21,7 @@
       <div class="navbar-nav">
         <a role="button" tabindex="0" [class.menu__item--selected]="item.id === selectedId" [class.menu__item]="item.id !== selectedId"
           *ngFor="let item of menuItems" (click)="changeSelection(item.id)">{{item.name}}</a>
-        <a role="button" tabindex="0" class="menu__item--special">Go Social!</a>
+        <a role="button" href="assets/CV_AdamKoscielniak.pdf" tabindex="0" class="menu__item--special link">Download CV</a>
 
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { SocialService } from 'src/services/social.service';
 import { AuthGuard } from './../utils/AuthGuard';
 import { ExperienceProjectsComponent } from './modules/CV/components/Experience/components/experience-projects/experience-projects.component';
 import { SkillService } from 'src/services/skill-service.service';
@@ -74,6 +75,9 @@ import { CVFooterComponent } from './modules/CV/components/cvfooter/cvfooter.com
 import { DownloadCvComponent } from './components/download-cv/download-cv.component';
 import { ThemeSelectorComponent } from './modules/theme-selector/theme-selector.component';
 import { FilterComponent } from './modules/CV/components/filter/filter.component';
+import { FooterComponent } from './modules/Footer/footer.component';
+import { AboutComponent } from './modules/Footer/components/about/about.component';
+import { SocialComponent } from './modules/Footer/components/social/social.component';
 
 
 const appRoutes: Routes = [
@@ -144,7 +148,10 @@ const appRoutes: Routes = [
     CVFooterComponent,
     DownloadCvComponent,
     ThemeSelectorComponent,
-    FilterComponent
+    FilterComponent,
+    FooterComponent,
+    AboutComponent,
+    SocialComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -177,6 +184,7 @@ const appRoutes: Routes = [
     ExperienceService,
     EducationService,
     SkillService,
+    SocialService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
