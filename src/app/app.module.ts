@@ -84,7 +84,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: '', component: CVMainComponent },
   {
-    path: 'Admin',
+    path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
