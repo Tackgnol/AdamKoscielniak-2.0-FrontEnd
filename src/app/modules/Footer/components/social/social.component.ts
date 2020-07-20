@@ -21,7 +21,6 @@ export class SocialComponent implements OnInit {
       data => {
         this.socialUrls = data.Value;
         this.loading = false;
-        console.log(this.socialUrls);
       },
       e => {
         this.toastr.error(e, null, {

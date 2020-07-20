@@ -1,13 +1,7 @@
-import { isNil, forIn, isEmpty } from 'lodash';
-
-import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams
-} from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { forIn, isEmpty, isNil } from 'lodash';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { ServerResponse } from './ServerResponse';
 import { IHeader } from '../models/interface/IHeader';
 
@@ -37,7 +31,6 @@ export class BaseService {
     const paramQuery = param ? `/${param}` : '';
     const parsedParameters = {};
     forIn(queryParametrs, (value, key) => {
-      console.log(key, value);
       if (!isNil(value) && !isEmpty(value)) {
         if (typeof value === 'object') {
           parsedParameters[key] = value.join(',');

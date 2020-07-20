@@ -9,7 +9,9 @@ import cssVars from 'css-vars-ponyfill';
 })
 export class ThemeSelectorComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  }
 
   private themeWrapper = document.querySelector('body');
 
@@ -27,7 +29,7 @@ export class ThemeSelectorComponent implements OnInit {
         { name: '--text-medium-color-accent', value: '#838383' },
         { name: '--text-light-color-accent', value: '#838383' },
         { name: '--footer-image', value: 'url("/assets/lake-gs.jpg")' },
-        { name: '--summary-image', value: 'url("/assets/wave-GS.jpg")' },
+        { name: '--summary-image', value: 'url("/assets/wave-GS.jpg")' }
       ]
     },
     {
@@ -41,8 +43,8 @@ export class ThemeSelectorComponent implements OnInit {
         { name: '--text-strong-color-accent', value: '#ffffff' },
         { name: '--text-medium-color-accent', value: '#FFEBEE' },
         { name: '--text-light-color-accent', value: '#E57373' },
-        { name: '--footer-image', value: 'url("/assets/lake-gs.jpg")' },
-        { name: '--summary-image', value: 'url("/assets/wave-GS.jpg")' },
+        { name: '--footer-image', value: 'url("/assets/red-bot.jpg")' },
+        { name: '--summary-image', value: 'url("/assets/red-top.jpg")' }
       ]
     },
     {
@@ -56,8 +58,8 @@ export class ThemeSelectorComponent implements OnInit {
         { name: '--text-strong-color-accent', value: '#ffffff' },
         { name: '--text-medium-color-accent', value: '#1976D2' },
         { name: '--text-light-color-accent', value: '#1565C0' },
-        { name: '--footer-image', value: 'url("/assets/lake-gs.jpg")' },
-        { name: '--summary-image', value: 'url("/assets/wave-GS.jpg")' },
+        { name: '--footer-image', value: 'url("/assets/blue-bot.jpg")' },
+        { name: '--summary-image', value: 'url("/assets/blue-top.jpg")' }
       ]
     },
     {
@@ -71,14 +73,21 @@ export class ThemeSelectorComponent implements OnInit {
         { name: '--text-strong-color-accent', value: '#ffffff' },
         { name: '--text-medium-color-accent', value: '#00897B' },
         { name: '--text-light-color-accent', value: '#00695C' },
-        { name: '--footer-image', value: 'url("/assets/lake-gs.jpg")' },
-        { name: '--summary-image', value: 'url("/assets/wave-GS.jpg")' },
+        { name: '--footer-image', value: 'url("/assets/green-bot.jpg")' },
+        { name: '--summary-image', value: 'url("/assets/green-top.jpg")' }
       ]
     }
   ];
 
+  private saveToLocalStorage(themeName: string) {
+    localStorage.setItem('theme', themeName);
+  }
 
-  global(themeName) {
+  private readFromLocalStorage() {
+    return localStorage.getItem('theme');
+  }
+
+  private setTheme(themeName) {
     const styleSheet = find(this.themes, t => t.name === themeName);
     const variables = {};
     for (let i = 0; i < styleSheet.styles.length; i++) {
@@ -88,14 +97,23 @@ export class ThemeSelectorComponent implements OnInit {
         variables[elem.name] = elem.value;
       }
     }
-    cssVars({variables: variables});
+    cssVars({ variables: variables });
+  }
+
+  global(themeName) {
+    this.setTheme(themeName);
+    this.saveToLocalStorage(themeName);
   }
 
   OnInit() {
   }
 
   ngOnInit(): void {
-
+    let theme = this.readFromLocalStorage();
+    if (!theme) {
+      theme = this.themes[0].name;
+    }
+    this.setTheme(theme);
   }
 
 }

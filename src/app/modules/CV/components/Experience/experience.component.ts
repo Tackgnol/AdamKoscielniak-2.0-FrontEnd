@@ -1,4 +1,4 @@
-import { FilterService } from './../../../../../services/filter.service';
+import { FilterService } from '../../../../../services/filter.service';
 import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from 'src/services/experience-service.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,6 @@ export class ExperienceComponent implements OnInit {
   ) {
     this.filters.skillFilters.subscribe(
       r => {
-        console.log('reload skills!');
         this.skills = r;
         this.loadData();
       }
@@ -54,7 +53,7 @@ export class ExperienceComponent implements OnInit {
         });
       }
     );
-  }
+  };
 
   ngOnInit() {
     this.loadData();

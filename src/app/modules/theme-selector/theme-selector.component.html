@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-10">
       <div class="row row__padding" *ngFor="let theme of themes" (click)="global(theme.name)">
-        <a class="theme-selector-item" [ngStyle]="{'background-color': theme.styles[0].value, 'color': theme.styles[3].value}"
+        <a class="theme-selector-item theme-pointer" [ngStyle]="{'background-color': theme.styles[0].value, 'color': theme.styles[3].value}"
           role="button">
-          <p>{{theme.name}}</p>
+          <p >{{theme.name}}</p>
         </a>
       </div>
     </div>

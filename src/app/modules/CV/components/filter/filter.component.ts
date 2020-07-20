@@ -1,7 +1,6 @@
 import { FilterService } from '../../../../../services/filter.service';
 import { Component, OnInit } from '@angular/core';
 
-import { findIndex, pullAt } from 'lodash';
 import {SkillService} from '../../../../../services/skill-service.service';
 import {filter} from 'lodash';
 
@@ -16,7 +15,7 @@ export class FilterComponent implements OnInit {
     this.filterDates();
   }
 
-  dateRange = [2011, 2019];
+  dateRange = [2011,  new Date().getFullYear()];
 
   skills = [];
   skillGroups = [];
@@ -27,7 +26,7 @@ export class FilterComponent implements OnInit {
   resetFilter = () => {
     this.skills = [];
     this.filters.setMultiFilter([]);
-    this.dateRange = [2011, 2019];
+    this.dateRange = [2011, new Date().getFullYear()];
     this.filterDates();
     for (const skill of this.skillGroups) {
       skill.checked = false;
