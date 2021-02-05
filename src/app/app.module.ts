@@ -1,15 +1,15 @@
 import { SocialService } from 'src/services/social.service';
-import { AuthGuard } from './../utils/AuthGuard';
+import { AuthGuard } from '../utils/AuthGuard';
 import { ExperienceProjectsComponent } from './modules/CV/components/Experience/components/experience-projects/experience-projects.component';
 import { SkillService } from 'src/services/skill-service.service';
 import { EducationService } from 'src/services/education-service.service';
 import { SingleEducationAdminComponent } from './modules/Admin/education-admin/components/single-education/single-education.component';
-import { FilterService } from './../services/filter.service';
+import { FilterService } from '../services/filter.service';
 import { NouisliderModule } from 'ng2-nouislider';
-import { AuthService } from './../services/auth-service.service';
-import { AuthInterceptor } from './../utils/AuthInterceptor';
-import { SpinnerComponent } from './../utils/components/Spinner';
-import { ExperienceService } from './../services/experience-service.service';
+import { AuthService } from '../services/auth-service.service';
+import { AuthInterceptor } from '../utils/AuthInterceptor';
+import { SpinnerComponent } from '../utils/components/Spinner';
+import { ExperienceService } from '../services/experience-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,7 +28,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ExperienceComponent } from './modules/CV/components/Experience/experience.component';
 import { LoginFormComponent } from './modules/Login/components/login-form/login-form.component';
 import { CommonModule, DatePipe } from '../../node_modules/@angular/common';
-import { Routes, RouterModule } from '../../node_modules/@angular/router';
 import { CVMainComponent } from './modules/CV/cv.component';
 import { ExperienceResponsibilitiesComponent } from './modules/CV/components/Experience/components/experience-responsibilities/experience-responsibilities.component';
 import { ExperienceSkillsComponent } from './modules/CV/components/Experience/components/experience-skills/experience-skills.component';
@@ -40,7 +39,7 @@ import { MainAdminComponent } from './modules/Admin/main-admin/main-admin.compon
 import { SingleExperienceComponent } from './modules/Admin/experience-admin/components/single-experience/single-experience.component';
 import { NewExperienceComponent } from './modules/Admin/experience-admin/components/new-experience/new-experience.component';
 import { ConfirmationModalComponent } from '../utils/components/confirmation-modal/confirmation-modal.component';
-import { ModalModule, BsDropdownModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ExperienceFormComponent } from './modules/Admin/experience-admin/components/experience-form/experience-form.component';
 import { ProjectsComponent } from './modules/CV/components/Projects/projects.component';
@@ -78,6 +77,7 @@ import { FilterComponent } from './modules/CV/components/filter/filter.component
 import { FooterComponent } from './modules/Footer/footer.component';
 import { AboutComponent } from './modules/Footer/components/about/about.component';
 import { SocialComponent } from './modules/Footer/components/social/social.component';
+import { RouterModule, Routes } from '@angular/router';
 
 
 const appRoutes: Routes = [
@@ -167,7 +167,6 @@ const appRoutes: Routes = [
     }),
     DragScrollModule,
     ModalModule.forRoot(),
-    BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     QuillModule,
     BrowserModule,

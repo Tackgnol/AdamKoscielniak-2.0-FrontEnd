@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { expandH } from 'src/utils/Animations';
 import Hobby from 'src/models/Hobby';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { HobbyService } from 'src/services/hobby-service.service';
 import { ConfirmationModalComponent } from 'src/utils/components/confirmation-modal/confirmation-modal.component';
 

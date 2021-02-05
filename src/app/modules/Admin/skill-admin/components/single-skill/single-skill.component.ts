@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import SkillGroup from 'src/models/SkillGroup';
 import { SkillService } from 'src/services/skill-service.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from 'src/utils/components/confirmation-modal/confirmation-modal.component';
 import { expandH } from 'src/utils/Animations';
 

@@ -1,7 +1,7 @@
 import { EducationService } from 'src/services/education-service.service';
 import { Education } from 'src/models/Education';
 import { Component, OnInit, Input } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from 'src/utils/components/confirmation-modal/confirmation-modal.component';
 
 @Component({
