@@ -3,7 +3,7 @@ import ISummaryItem from 'src/models/interface/ISummaryItem';
 import { SummaryService } from 'src/services/summary-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { FilterService } from 'src/services/filter.service';
-import { DragScrollComponent } from 'ngx-drag-scroll/lib';
+import { DragScrollComponent } from 'ngx-drag-scroll';
 
 
 @Component({
@@ -34,7 +34,7 @@ export class SummaryComponent implements OnInit {
   skills = Array<string>();
   summaryItems = Array<ISummaryItem>();
 
-  @ViewChild('items', { read: DragScrollComponent }) ds: DragScrollComponent;
+  @ViewChild('items', { read: DragScrollComponent, static: true }) ds: DragScrollComponent;
 
   moveLeft() {
     this.ds.moveLeft();
