@@ -27,7 +27,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ExperienceComponent } from './modules/CV/components/Experience/experience.component';
 import { LoginFormComponent } from './modules/Login/components/login-form/login-form.component';
-import { CommonModule, DatePipe } from '../../node_modules/@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CVMainComponent } from './modules/CV/cv.component';
 import { ExperienceResponsibilitiesComponent } from './modules/CV/components/Experience/components/experience-responsibilities/experience-responsibilities.component';
 import { ExperienceSkillsComponent } from './modules/CV/components/Experience/components/experience-skills/experience-skills.component';
@@ -156,9 +156,10 @@ const appRoutes: Routes = [
   imports: [
     ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes, {
-      scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled'
-    }),
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    relativeLinkResolution: 'legacy'
+}),
     LaddaModule.forRoot({
       style: 'expand-left',
       spinnerSize: 40,
