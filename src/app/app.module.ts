@@ -169,7 +169,7 @@ const appRoutes: Routes = [
     DragScrollModule,
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    QuillModule,
+    QuillModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpClientModule,

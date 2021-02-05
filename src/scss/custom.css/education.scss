@@ -43,8 +43,14 @@
   height: 26px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  -ms-border-top-right-radius: 50%;
+  -ms-border-top-left-radius: 50%;
+  -ms-border-bottom-right-radius: 50%;
+  -ms-border-bottom-left-radius: 50%;
+  -o-border-top-right-radius: 50%;
+  -o-border-top-left-radius: 50%;
+  -o-border-bottom-right-radius: 50%;
+  -o-border-bottom-left-radius: 50%;
   border-radius: 50%;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
@@ -63,8 +69,14 @@
   height: 14px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  -ms-border-top-right-radius: 50%;
+  -ms-border-top-left-radius: 50%;
+  -ms-border-bottom-right-radius: 50%;
+  -ms-border-bottom-left-radius: 50%;
+  -o-border-top-right-radius: 50%;
+  -o-border-top-left-radius: 50%;
+  -o-border-bottom-right-radius: 50%;
+  -o-border-bottom-left-radius: 50%;
   border-radius: 50%;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
@@ -102,6 +114,7 @@
   height: 50px;
   margin: auto auto;
   transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .education__content {
